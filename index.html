@@ -1,0 +1,2557 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>英语 4B 学期语法与词汇复习网页</title>
+  <style>
+    :root {
+      --ink: #24302f;
+      --muted: #657371;
+      --paper: #fffdf7;
+      --wash: #f5f0e6;
+      --line: #d8ded8;
+      --teal: #177e89;
+      --teal-soft: #d9f0ef;
+      --coral: #d45d4c;
+      --coral-soft: #ffe2d9;
+      --green: #5e8c61;
+      --green-soft: #e4f0dd;
+      --gold: #c78922;
+      --gold-soft: #fff0c9;
+      --white: #ffffff;
+      --shadow: 0 18px 48px rgba(31, 45, 42, 0.12);
+      font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(23, 126, 137, 0.14), transparent 30rem),
+        linear-gradient(180deg, #fbf7ed 0%, #eef4ef 48%, #fffdf7 100%);
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 24px 0 56px;
+    }
+
+    .topbar {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .brand {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 58px;
+      height: 58px;
+      border-radius: 8px;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--teal), var(--green));
+      box-shadow: var(--shadow);
+      flex: 0 0 auto;
+    }
+
+    .brand-mark svg {
+      width: 34px;
+      height: 34px;
+    }
+
+    .eyebrow {
+      margin: 0 0 4px;
+      color: var(--coral);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin-bottom: 6px;
+      font-size: clamp(30px, 4.2vw, 48px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin: 0;
+      max-width: 740px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .top-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+
+    .icon-button,
+    .primary-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      color: var(--ink);
+      padding: 0 14px;
+      box-shadow: 0 8px 20px rgba(31, 45, 42, 0.08);
+    }
+
+    .primary-button {
+      border-color: transparent;
+      background: var(--teal);
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    .icon-button svg,
+    .primary-button svg {
+      width: 18px;
+      height: 18px;
+      stroke-width: 2;
+    }
+
+    .hero {
+      overflow: hidden;
+      border: 1px solid rgba(216, 222, 216, 0.8);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 360px;
+      gap: 28px;
+      align-items: center;
+      padding: 26px;
+    }
+
+    .week-map {
+      min-height: 210px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #f7fbf9, #fff6e6);
+      border: 1px solid var(--line);
+      padding: 18px;
+    }
+
+    .week-map svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .stat {
+      min-height: 88px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      padding: 14px;
+    }
+
+    .stat span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .stat strong {
+      font-size: 26px;
+      line-height: 1;
+    }
+
+    .controls {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: grid;
+      grid-template-columns: minmax(260px, 1fr) auto;
+      gap: 14px;
+      align-items: center;
+      margin: 18px 0;
+      padding: 12px;
+      border: 1px solid rgba(216, 222, 216, 0.9);
+      border-radius: 8px;
+      background: rgba(255, 253, 247, 0.94);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 10px 28px rgba(31, 45, 42, 0.08);
+    }
+
+    .search {
+      position: relative;
+    }
+
+    .search svg {
+      position: absolute;
+      top: 50%;
+      left: 14px;
+      width: 18px;
+      height: 18px;
+      transform: translateY(-50%);
+      color: var(--muted);
+    }
+
+    .search input {
+      width: 100%;
+      height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 0 14px 0 42px;
+      background: var(--white);
+      color: var(--ink);
+      outline: none;
+    }
+
+    .search input:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(23, 126, 137, 0.14);
+    }
+
+    .week-tabs {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+
+    .tab {
+      min-height: 40px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      color: var(--ink);
+      padding: 0 12px;
+      font-weight: 700;
+    }
+
+    .tab.is-active {
+      border-color: transparent;
+      background: var(--coral);
+      color: var(--white);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 230px minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .side {
+      position: sticky;
+      top: 86px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .side-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.86);
+      padding: 14px;
+    }
+
+    .side-panel h2 {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 7px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .mini-list a {
+      display: block;
+      border-radius: 8px;
+      color: var(--ink);
+      text-decoration: none;
+      padding: 8px 10px;
+      background: var(--wash);
+    }
+
+    .mini-list a:hover {
+      background: var(--teal-soft);
+    }
+
+    .progress-bar {
+      height: 10px;
+      border-radius: 999px;
+      background: var(--wash);
+      overflow: hidden;
+      margin: 8px 0 10px;
+    }
+
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--teal), var(--green));
+      transition: width 0.2s ease;
+    }
+
+    .week {
+      display: grid;
+      gap: 14px;
+      margin-bottom: 20px;
+      scroll-margin-top: 92px;
+    }
+
+    .week-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: end;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      padding: 18px;
+    }
+
+    .week-header h2 {
+      margin-bottom: 8px;
+      font-size: 26px;
+      letter-spacing: 0;
+    }
+
+    .week-header p {
+      margin-bottom: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .week-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 34px;
+      border-radius: 999px;
+      padding: 0 12px;
+      color: var(--teal);
+      background: var(--teal-soft);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .unit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .unit-card {
+      display: grid;
+      gap: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 16px;
+      min-width: 0;
+    }
+
+    .unit-card.is-hidden {
+      display: none;
+    }
+
+    .unit-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: start;
+    }
+
+    .unit-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 28px;
+      width: fit-content;
+      border-radius: 999px;
+      padding: 0 10px;
+      color: var(--coral);
+      background: var(--coral-soft);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .unit-card h3 {
+      margin: 8px 0 0;
+      font-size: 21px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    .complete {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .complete input {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--teal);
+    }
+
+    .focus-line {
+      min-height: 40px;
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .section {
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+    }
+
+    .section h4 {
+      margin: 0 0 8px;
+      font-size: 15px;
+      letter-spacing: 0;
+    }
+
+    .bullets {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--ink);
+      line-height: 1.68;
+    }
+
+    .bullets li + li {
+      margin-top: 4px;
+    }
+
+    .chips {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      border-radius: 999px;
+      padding: 0 10px;
+      color: var(--ink);
+      background: var(--wash);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .chip.strong {
+      background: var(--gold-soft);
+      color: #6b4811;
+      font-weight: 700;
+    }
+
+    .practice {
+      border-radius: 8px;
+      background: var(--green-soft);
+      padding: 12px;
+      line-height: 1.65;
+    }
+
+    .review-card,
+    .source-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      padding: 18px;
+      margin-top: 14px;
+    }
+
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .check-item {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      padding: 10px;
+      line-height: 1.55;
+    }
+
+    .check-item input {
+      margin-top: 4px;
+      accent-color: var(--green);
+      flex: 0 0 auto;
+    }
+
+    .source-card a {
+      color: var(--teal);
+      overflow-wrap: anywhere;
+    }
+
+    .audit-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .audit-note {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      padding: 12px;
+      line-height: 1.65;
+    }
+
+    .audit-note strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--coral);
+    }
+
+    .audit-table {
+      display: grid;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .audit-row {
+      display: grid;
+      grid-template-columns: 120px minmax(0, 1fr) 150px;
+      gap: 10px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      padding: 10px;
+    }
+
+    .audit-row strong,
+    .audit-row span {
+      overflow-wrap: anywhere;
+    }
+
+    .status-ok {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      min-height: 30px;
+      padding: 0 10px;
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .direction-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .direction-item {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      padding: 9px;
+      line-height: 1.55;
+    }
+
+    .quiz-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .quiz-question {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      padding: 10px;
+    }
+
+    .quiz-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: start;
+    }
+
+    .quiz-type {
+      display: inline-flex;
+      width: fit-content;
+      min-height: 24px;
+      align-items: center;
+      border-radius: 999px;
+      padding: 0 8px;
+      color: var(--teal);
+      background: var(--teal-soft);
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .quiz-prompt {
+      margin: 0;
+      line-height: 1.62;
+    }
+
+    .answer-toggle {
+      min-height: 32px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      color: var(--ink);
+      padding: 0 10px;
+      white-space: nowrap;
+    }
+
+    .answer-panel {
+      display: none;
+      margin-top: 9px;
+      border-radius: 8px;
+      background: var(--teal-soft);
+      padding: 9px;
+      line-height: 1.6;
+    }
+
+    .answer-panel.is-open {
+      display: block;
+    }
+
+    .weekly-tests {
+      display: grid;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .source-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .source-link {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      padding: 10px;
+      line-height: 1.55;
+    }
+
+    .source-link span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    .empty-state {
+      display: none;
+      border: 1px dashed var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.75);
+      padding: 22px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .empty-state.is-visible {
+      display: block;
+    }
+
+    @media (max-width: 980px) {
+      .topbar,
+      .hero-inner,
+      .controls,
+      .layout,
+      .week-header {
+        grid-template-columns: 1fr;
+      }
+
+      .top-actions,
+      .week-tabs {
+        justify-content: flex-start;
+      }
+
+      .side {
+        position: static;
+      }
+
+      .unit-grid,
+      .stats,
+      .review-grid,
+      .checklist,
+      .audit-grid,
+      .direction-grid,
+      .source-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        width: min(100% - 20px, 1180px);
+        padding-top: 14px;
+      }
+
+      .brand {
+        align-items: flex-start;
+      }
+
+      .brand-mark {
+        width: 48px;
+        height: 48px;
+      }
+
+      .hero-inner,
+      .week-header,
+      .unit-card,
+      .review-card,
+      .source-card {
+        padding: 14px;
+      }
+
+      .unit-grid,
+      .stats,
+      .review-grid,
+      .checklist,
+      .audit-grid,
+      .direction-grid,
+      .source-grid,
+      .audit-row {
+        grid-template-columns: 1fr;
+      }
+
+      .controls {
+        position: static;
+      }
+
+      .week-tabs {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .tab {
+        width: 100%;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+
+      .top-actions,
+      .controls,
+      .side,
+      .complete {
+        display: none !important;
+      }
+
+      .page {
+        width: 100%;
+        padding: 0;
+      }
+
+      .hero,
+      .week-header,
+      .unit-card,
+      .review-card,
+      .source-card {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+
+      .unit-grid,
+      .review-grid,
+      .checklist,
+      .audit-grid,
+      .direction-grid,
+      .source-grid,
+      .audit-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path d="M4 6.5A2.5 2.5 0 0 1 6.5 4H20v15H6.5A2.5 2.5 0 0 1 4 16.5z"></path>
+            <path d="M8 8h8M8 12h7M8 16h5"></path>
+          </svg>
+        </div>
+        <div>
+          <p class="eyebrow">Oxford Shanghai 4B</p>
+          <h1>学期语法与词汇复习</h1>
+          <p class="subtitle">把 12 个单元整合成 4 周复习路线：每周 3 个单元，按课文句型、语法重点、必会词汇、家庭练习和周末复盘推进。</p>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <button class="icon-button" type="button" id="resetProgress" title="清空本页完成记录">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path d="M3 12a9 9 0 1 0 3-6.7"></path>
+            <path d="M3 4v5h5"></path>
+          </svg>
+          重置
+        </button>
+        <button class="primary-button" type="button" id="printPage" title="打印或保存为 PDF">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path d="M6 9V2h12v7"></path>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <path d="M6 14h12v8H6z"></path>
+          </svg>
+          打印
+        </button>
+      </div>
+    </header>
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <div>
+          <p class="eyebrow">复习路线</p>
+          <h2 id="hero-title">先说熟句型，再归纳语法，最后用听写和小写作检查。</h2>
+          <p class="subtitle">每天建议 40 分钟左右：课文朗读 8-10 分钟，语法句型 10 分钟，单词分类 10 分钟，听写或造句 10 分钟，错词回收 3 分钟。</p>
+          <div class="stats" aria-label="复习数据概览">
+            <article class="stat">
+              <span>总单元</span>
+              <strong>12</strong>
+            </article>
+            <article class="stat">
+              <span>复习周期</span>
+              <strong>4 周</strong>
+            </article>
+            <article class="stat">
+              <span>每周节奏</span>
+              <strong>3 单元</strong>
+            </article>
+            <article class="stat">
+              <span>完成进度</span>
+              <strong id="doneCount">0/12</strong>
+            </article>
+          </div>
+        </div>
+
+        <figure class="week-map" aria-label="四周复习路径图">
+          <svg viewBox="0 0 360 220" role="img" aria-labelledby="map-title">
+            <title id="map-title">四周复习路径</title>
+            <rect x="16" y="20" width="328" height="180" rx="8" fill="#fffdf7" stroke="#d8ded8"></rect>
+            <path d="M64 154 C118 68 169 68 216 122 S296 160 316 72" fill="none" stroke="#177e89" stroke-width="7" stroke-linecap="round"></path>
+            <g fill="#ffffff" stroke-width="5">
+              <circle cx="64" cy="154" r="23" stroke="#d45d4c"></circle>
+              <circle cx="145" cy="72" r="23" stroke="#c78922"></circle>
+              <circle cx="234" cy="130" r="23" stroke="#5e8c61"></circle>
+              <circle cx="316" cy="72" r="23" stroke="#177e89"></circle>
+            </g>
+            <g font-family="Microsoft YaHei, Arial" font-size="15" font-weight="700" fill="#24302f" text-anchor="middle">
+              <text x="64" y="160">1</text>
+              <text x="145" y="78">2</text>
+              <text x="234" y="136">3</text>
+              <text x="316" y="78">4</text>
+            </g>
+            <g font-family="Microsoft YaHei, Arial" font-size="12" fill="#657371" text-anchor="middle">
+              <text x="64" y="195">感官与影子</text>
+              <text x="145" y="42">运动与家庭</text>
+              <text x="234" y="178">声音与时间</text>
+              <text x="316" y="42">音乐与故事</text>
+            </g>
+          </svg>
+        </figure>
+      </div>
+    </section>
+
+    <section class="controls" aria-label="筛选和搜索">
+      <label class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle>
+          <path d="m20 20-3.5-3.5"></path>
+        </svg>
+        <input id="searchInput" type="search" placeholder="搜索单元、语法点、单词或练习，例如：现在进行时、festival、whose">
+      </label>
+      <div class="week-tabs" role="tablist" aria-label="周次筛选">
+        <button class="tab is-active" type="button" data-filter="all">全部</button>
+        <button class="tab" type="button" data-filter="1">第 1 周</button>
+        <button class="tab" type="button" data-filter="2">第 2 周</button>
+        <button class="tab" type="button" data-filter="3">第 3 周</button>
+        <button class="tab" type="button" data-filter="4">第 4 周</button>
+      </div>
+    </section>
+
+    <main class="layout">
+      <aside class="side" aria-label="页面导航">
+        <section class="side-panel">
+          <h2>快速导航</h2>
+          <ul class="mini-list">
+            <li><a href="#source-audit">资料核对</a></li>
+            <li><a href="#week-1">第 1 周：Unit 1-3</a></li>
+            <li><a href="#week-2">第 2 周：Unit 4-6</a></li>
+            <li><a href="#week-3">第 3 周：Unit 7-9</a></li>
+            <li><a href="#week-4">第 4 周：Unit 10-12</a></li>
+            <li><a href="#weekly-tests">每周小测</a></li>
+            <li><a href="#final-review">综合复习</a></li>
+          </ul>
+        </section>
+        <section class="side-panel">
+          <h2>完成进度</h2>
+          <div class="progress-bar" aria-hidden="true">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <p class="subtitle" id="progressText">还没有勾选完成的单元。</p>
+        </section>
+      </aside>
+
+      <div>
+        <section class="review-card" id="source-audit">
+          <p class="eyebrow">资料核对</p>
+          <h2>先确认版本，再使用资料</h2>
+          <p class="subtitle">本页只采用 Joyee 匹配版 / 牛津上海版（试用本）4B 目录。公开中文资料用于核对单元名称、语法范围和题型方向，练习题为本页自编。</p>
+          <div class="audit-grid">
+            <div class="audit-note">
+              <strong>已匹配的版本</strong>
+              Joyee 页面、学霸网目录、21 世纪教育网资源页、一口网课程目录均出现同一套 12 个 Unit。
+            </div>
+            <div class="audit-note">
+              <strong>已排除的版本</strong>
+              另一套新版沪教目录以 Touch and feel、Smell and taste、The ugly duckling 为主，和本项目 Unit 名称不一致，避免混用。
+            </div>
+          </div>
+          <div class="audit-table" id="auditTable"></div>
+        </section>
+
+        <div id="weeks"></div>
+        <div class="empty-state" id="emptyState">没有找到匹配内容。可以换一个关键词，比如 “time”、“does”、“节日”。</div>
+
+        <section class="review-card" id="weekly-tests">
+          <p class="eyebrow">每周小测</p>
+          <h2>4 套综合测验题</h2>
+          <p class="subtitle">每套 15 题，覆盖当周 3 个单元。客观题可展开答案，开放题提供参考答案和评分提示。</p>
+          <div class="weekly-tests" id="weeklyTests"></div>
+        </section>
+
+        <section class="review-card" id="final-review">
+          <p class="eyebrow">4 周后</p>
+          <h2>综合复习检查清单</h2>
+          <p class="subtitle">下面这些项目能独立完成，就说明第一轮复习比较扎实。可以在第二轮复习时只盯错词和不熟的句型。</p>
+          <div class="checklist" id="grammarChecklist"></div>
+        </section>
+
+        <section class="review-card">
+          <p class="eyebrow">周末测试模板</p>
+          <h2>每周 25-30 分钟小测</h2>
+          <div class="review-grid">
+            <div class="practice">单词听写 20 个：优先抽本周必会词，错词第二天必须复现。</div>
+            <div class="practice">句型中译英 8 句：重点看 be、do、does、can、there be 是否正确。</div>
+            <div class="practice">课文朗读 1 个 Unit：看流利度、停顿和常见词发音。</div>
+            <div class="practice">小写作 5-8 句：必须用到本周至少 2 个语法点。</div>
+          </div>
+        </section>
+
+        <section class="source-card">
+          <p class="eyebrow">资料来源</p>
+          <h2>中文资料与版本来源</h2>
+          <p>下列资料只用于校对目录、题型和语法范围；本页测验题没有直接复制第三方题目。</p>
+          <div class="source-grid">
+            <a class="source-link" href="http://121.43.59.99:86/wp-content/uploads/joyee-english/index.html">Joyee English Learning 教材页面<span>本项目原始课文和词汇来源。</span></a>
+            <a class="source-link" href="https://xueba5.com/hujiaoban/yingyux4x_54sh/">学霸网 4B 目录<span>核对 Unit 名称和 Module 顺序。</span></a>
+            <a class="source-link" href="https://mip.21cnjy.com/mulu/87940.html">21 世纪教育网 Unit 1 资源页<span>核对版本、章节目录、课件/试卷/学案类型。</span></a>
+            <a class="source-link" href="https://www.yikouwang.com/w/tag/4%E5%B9%B4%E7%BA%A7/page/3">一口网课程视频目录<span>核对牛津上海版 4 年级第二学期目录。</span></a>
+            <a class="source-link" href="https://www.haoduoyun.cc/book/hjb/yingyu/4b.shtml">已排除：新版沪教目录<span>Unit 名称与 Joyee 匹配版不同，不纳入本页题库。</span></a>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const weeks = [
+      {
+        id: 1,
+        title: "第 1 周：Unit 1-3",
+        range: "感官、触感、影子",
+        goal: "能描述水果的颜色、形状、味道；能询问物品归属；能用简单句说明太阳、影子的位置变化。",
+        units: [
+          {
+            id: 1,
+            title: "What can you smell and taste?",
+            focus: "感官动词、选择疑问句、量词和指示代词。",
+            grammar: [
+              "感官动词 + 形容词：It tastes sweet. / It smells nice.",
+              "选择疑问句：Is it cherry juice or watermelon juice?",
+              "推测表达：It's ..., I think.",
+              "不可数名词量词：a glass of juice。",
+              "指示代词：these grapes / those grapes。"
+            ],
+            vocab: ["smell", "taste", "juice", "watermelon", "grape", "plum", "cherry", "strawberry", "peach", "sweet", "sour", "bitter", "crunchy", "purple", "round", "fruit", "guess", "think", "a glass of"],
+            extra: ["vine", "yard", "inside", "around", "also", "those", "these", "them", "child-children", "yum"],
+            practice: "准备水果或饮料，让孩子说 It smells ... / It tastes ...，再用 Is it ... or ...? 做二选一问答。",
+            mistakes: ["a glass of juice 不是 a juice。", "those grapes 是复数，后面用 are。", "sweet/sour/bitter/crunchy 是形容词。"]
+          },
+          {
+            id: 2,
+            title: "How does it feel?",
+            focus: "触感问答、whose 所有格、单复数对应。",
+            grammar: [
+              "触感问答：How does it feel? / It's soft.",
+              "所有格提问：Whose knife is this? / It's Danny's.",
+              "单复数对应：Whose pencil is this? / Whose pencils are these?",
+              "物主代词：my, your, his, her。",
+              "祈使短语：Take off your shoes."
+            ],
+            vocab: ["feel", "knife", "sharp", "blunt", "pencil", "pencil case", "soft", "hard", "rough", "smooth", "thick", "thin", "beach", "sand", "take off", "shoe", "key", "whose"],
+            extra: ["something", "office", "blind", "elephant", "another", "answer", "put", "find", "young", "beautiful", "skirt", "purse", "floor", "thing"],
+            practice: "把钥匙、铅笔、布、纸盒放进袋子，摸后说 It's hard/smooth/rough，再用家里物品练 Whose ... is this?",
+            mistakes: ["Whose 表示“谁的”，不要和 Who's 混淆。", "It's Danny's. 里的 's 表示“Danny 的”。", "these 后接复数。"]
+          },
+          {
+            id: 3,
+            title: "Look at the shadow!",
+            focus: "时间介词、位置介词、一般现在时三单。",
+            grammar: [
+              "时间介词：in the morning / at noon / in the evening。",
+              "地点介词：behind / in front of / on。",
+              "自然规律：The sun rises. / The shadow grows short.",
+              "动词三单：rise-rises, go-goes, grow-grows。",
+              "祈使句：Look at the shadow."
+            ],
+            vocab: ["hill", "lawn", "path", "bench", "shadow", "sun", "rise", "high", "noon", "go down", "again", "behind", "in front of", "grow", "shape", "follow"],
+            extra: ["torch", "stick", "stay", "sometimes", "strong", "tea", "deer", "bear", "tear", "cry", "back", "bite", "wait", "stop", "away", "afraid"],
+            practice: "画太阳、树和影子，按 morning/noon/evening 说 3 句，再用玩具练 behind、in front of、on。",
+            mistakes: ["at noon 是固定搭配。", "The sun rises 要加 s。", "go down 在课文里表示“落下”。"]
+          }
+        ],
+        review: ["每个单元抽 10 个必会词，共 30 个。", "用水果、触感、位置各说 4 句。", "写 5-6 句描述一种水果或一种物品。"]
+      },
+      {
+        id: 2,
+        title: "第 2 周：Unit 4-6",
+        range: "运动、动物、家庭生活",
+        goal: "能表达喜欢的运动和动物；能问答动物吃什么、喜欢什么；能用现在进行时描述家里的人正在做什么。",
+        units: [
+          {
+            id: 4,
+            title: "Sports",
+            focus: "like + -ing、would like to、第三人称疑问。",
+            grammar: [
+              "喜好表达：Do you like playing badminton? / Yes, I do.",
+              "like + -ing：like playing, like swimming, like reading。",
+              "邀请表达：Would you like to join? / I'd love to.",
+              "第三人称疑问：Does Alice like playing badminton?",
+              "建议句：Let's join the club together."
+            ],
+            vocab: ["sport", "football", "table tennis", "volleyball", "badminton", "basketball", "poster", "join", "club", "favourite", "together", "else", "healthy", "swimsuit", "swimming goggles"],
+            extra: ["notice", "warm-up", "pool", "yourself", "enjoy", "spare", "hobby", "strong"],
+            practice: "采访家人 Do you like playing ...?，再用 Would you like to ...? 做 5 组邀请和回答。",
+            mistakes: ["like playing 后面动词加 ing。", "Would you like to 后接动词原形。", "运动前通常不加 the。"]
+          },
+          {
+            id: 5,
+            title: "Cute animals",
+            focus: "一般现在时三单、does 问句、动物喜好。",
+            grammar: [
+              "三单肯定句：She eats fish. / He likes bones.",
+              "三单问句：What does she eat? / Does he like dog food?",
+              "否定回答：No, he doesn't.",
+              "喜好与食物：What does ... like?",
+              "强调否定：not ... at all。"
+            ],
+            vocab: ["bone", "cat food", "dog food", "parrot", "tortoise", "cute", "fish", "large", "bowl", "mouse", "catch", "angry", "hungry", "animal", "leaf-leaves", "meat"],
+            extra: ["hole", "shake", "fall", "goat", "toe", "boat", "toast", "dirty", "basket", "tired", "sleep"],
+            practice: "画一种动物，写 It eats ... / It likes ... / It doesn't like ...，再练 eat-eats、like-likes、catch-catches。",
+            mistakes: ["问句有 does，后面动词回原形。", "he/she/it 后动词常加 s/es。", "leaves 是 leaf 的复数。"]
+          },
+          {
+            id: 6,
+            title: "Home life",
+            focus: "现在进行时、usually 和 now 对比、房间位置。",
+            grammar: [
+              "现在进行时：I'm doing my homework. / We're looking at the stars.",
+              "结构：am/is/are + 动词-ing。",
+              "usually 和 now 对比：I usually watch TV, but now we're looking at the stars.",
+              "房间位置：in the living room / bedroom / bathroom / kitchen。",
+              "请求帮忙：Come and help me, please."
+            ],
+            vocab: ["bedroom", "living room", "bathroom", "kitchen", "homework", "model plane", "wash", "dinner", "turn off", "light", "chat", "storybook", "holiday", "beach", "lunch"],
+            extra: ["fairy tale", "model", "tell", "Sanya", "have a holiday", "cook dinner", "make a model plane"],
+            practice: "问 What are you doing?，孩子回答 I'm ...ing；再做 usually/now 对比造句，每天 3 句。",
+            mistakes: ["I'm doing 不能漏掉 am。", "make 变 making 要去掉 e。", "turn off the lights 是“关灯”。"]
+          }
+        ],
+        review: ["每单元听写 10-12 个必会词。", "做 12 句转换：I like -> He likes；I am doing -> She is doing。", "写一段 My family at home，至少 6 句。"]
+      },
+      {
+        id: 3,
+        title: "第 3 周：Unit 7-9",
+        range: "声音、时间、星期",
+        goal: "能描述声音大小；能问答正在发生的动作；能准确表达时间、星期和频率。",
+        units: [
+          {
+            id: 7,
+            title: "Sounds",
+            focus: "现在进行时疑问句、祈使句、too + adjective。",
+            grammar: [
+              "复数进行时问答：Are they playing basketball? / No, they aren't.",
+              "单数进行时问答：Is the doorbell ringing? / No, it isn't.",
+              "祈使句：Be careful. / Be quiet.",
+              "too + adjective：It's too loud. / It's too quiet.",
+              "there be：There are some students outside."
+            ],
+            vocab: ["quiet", "loud", "bell", "television", "sound", "noisy", "ring", "watch TV", "doorbell", "bicycle", "hear", "outside", "student", "noise", "careful", "different"],
+            extra: ["pond", "awake", "doze", "square", "wind-bell", "crayon", "string", "scissors", "tie", "wheel", "puzzled", "lady-ladies", "sorry", "nap", "unhappy", "later"],
+            practice: "播放门铃、电话、电视等声音，孩子说 It's the ... 或 It's too ...，再练 Are you ...ing?",
+            mistakes: ["Are they playing? 回答 Yes, they are. / No, they aren't.", "too loud 表示“太响了”。", "noise 是名词，noisy 是形容词。"]
+          },
+          {
+            id: 8,
+            title: "Time",
+            focus: "钟点表达、What time is it、日常动作短语。",
+            grammar: [
+              "时间表达：seven o'clock / a quarter past seven / half past seven / a quarter to eight。",
+              "问时间：What time is it?",
+              "现在进行时：What are you doing? / I'm brushing my teeth.",
+              "固定句：It's time for ...",
+              "日常动作：get up, brush my teeth, wash my face, have breakfast。"
+            ],
+            vocab: ["o'clock", "quarter", "half", "get up", "brush my teeth", "wash my face", "have breakfast", "clock", "late", "bedtime", "time", "breakfast", "forty", "twenty", "thirty", "today", "tomorrow"],
+            extra: ["battery", "puzzle", "owl", "tiny", "hit", "aloud", "cartoon", "finish", "work", "sofa", "talk", "next", "start", "leave", "only", "way"],
+            practice: "拨钟练习，家长拨时间，孩子说英文；再写 5 句 I ... at ... 的作息句。",
+            mistakes: ["a quarter to eight 是 7:45。", "at 7 o'clock 用 at。", "brush my teeth 里的 teeth 是复数。"]
+          },
+          {
+            id: 9,
+            title: "Days of the week",
+            focus: "频率副词、星期表达、一般现在时三单。",
+            grammar: [
+              "频率副词：always, usually, often, sometimes, never。",
+              "位置：频率副词一般放在实义动词前，be 动词后。",
+              "星期表达：on Monday / on Saturday and Sunday。",
+              "时间范围：from Monday to Friday。",
+              "三单：Peter goes to school ..."
+            ],
+            vocab: ["always", "usually", "often", "sometimes", "never", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "week", "weekend", "busy", "free", "classmate", "activity"],
+            extra: ["Chinese chess", "at weekends", "rainbow", "film", "show", "meeting", "have a good time"],
+            practice: "用 always > usually > often > sometimes > never 做频率阶梯；写一周计划表，每天一句 I ... on Monday.",
+            mistakes: ["I always busy 错，应为 I am always busy。", "on Monday 不是 in Monday。", "Peter goes 要加 es。"]
+          }
+        ],
+        review: ["听写时间表达 8 个、星期 7 个、声音词 10 个。", "完成 10 句现在进行时问答。", "写 My week，至少 7 句，至少 3 个频率副词。"]
+      },
+      {
+        id: 4,
+        title: "第 4 周：Unit 10-12",
+        range: "音乐、节日、故事",
+        goal: "能表达会演奏什么乐器；能介绍中国节日；能复述简单故事并描述人物状态。",
+        units: [
+          {
+            id: 10,
+            title: "A Music class",
+            focus: "can 能力表达、乐器前 the、位置介词。",
+            grammar: [
+              "能力表达：I can play the violin. / What can you play?",
+              "can 后动词原形：can play, can sing, can hear。",
+              "乐器前常用 the：play the violin, play the piano, play the drum。",
+              "物主代词：my, your。",
+              "位置介词：behind, beside。"
+            ],
+            vocab: ["piano", "violin", "triangle", "drum", "music", "sound", "city", "behind", "beside", "whose", "mice", "musical", "instrument", "happen", "sure"],
+            extra: ["gold", "piper", "full of", "be full of", "What's the sound?"],
+            practice: "做 What can you play? / I can play ... 能力问答；听声音猜乐器，练 What's the sound?",
+            mistakes: ["can 后不用 to。", "乐器前通常加 the，运动前通常不加 the。", "mice 是 mouse 的复数。"]
+          },
+          {
+            id: 11,
+            title: "Festivals in China",
+            focus: "节日喜好、usually、during、like + eating。",
+            grammar: [
+              "节日喜好：What festivals do you like? / I like the Spring Festival.",
+              "习惯活动：What do you usually do during ...?",
+              "频率副词复习：usually。",
+              "时间介词：during the Spring Festival, on New Year's Eve。",
+              "like + eating：I like eating rice dumplings."
+            ],
+            vocab: ["the Spring Festival", "the Dragon Boat Festival", "the Mid-autumn Festival", "the Double Ninth Festival", "festival", "rice dumpling", "relative", "red envelope", "fireworks", "mooncake", "traditional", "important", "during", "old people", "remember"],
+            extra: ["fork", "envelope", "weather", "special", "which", "dumpling", "learn", "manners", "colorful", "activity", "grade", "chopsticks", "polite", "money", "eve", "place", "mountain", "month", "race"],
+            practice: "做节日卡片，每个节日写“时间/食物/活动”；再口头介绍 During ..., we usually ...",
+            mistakes: ["节日前常用 the。", "during 后接一段时间或节日期间。", "fireworks 常用复数形式。"]
+          },
+          {
+            id: 12,
+            title: "Story time",
+            focus: "there be、序数词、故事叙述和形容词。",
+            grammar: [
+              "there be：There are four eggs in the nest.",
+              "序数词：the fourth egg。",
+              "现在进行时：Mother Duck is making a nest.",
+              "一般现在时叙述故事：The eggs open.",
+              "形容词描述：ugly, lovely, grey, lonely, heavy, light, sad, happy。"
+            ],
+            vocab: ["duckling", "swan", "nest", "egg", "spring", "pond", "worm", "ugly", "lovely", "grey", "lonely", "behind", "happy", "baby-babies", "fourth", "heavy", "light", "feed", "sad", "all"],
+            extra: ["drive ... away", "stay", "again", "make a nest", "sit on the nest", "look into the pond"],
+            practice: "用 5 幅图或 5 句话复述故事；再练 There is ... / There are ... 和形容词反义配对。",
+            mistakes: ["There are four eggs，复数用 are。", "fourth 是“第四”，不是 four。", "babies 是 baby 的复数。"]
+          }
+        ],
+        review: ["听写乐器词 6 个、节日词 10 个、故事词 12 个。", "can、there be、usually 三类各造 5 句。", "介绍一个中国节日，或用 6-8 句复述 Unit 12 故事。"]
+      }
+    ];
+
+    const sourceAudit = [
+      { module: "Module 1 Using my five senses", unit: "M1U1 / Unit 1", title: "What can you smell and taste?", status: "匹配", sources: "Joyee、学霸网、21世纪教育网、一口网" },
+      { module: "Module 1 Using my five senses", unit: "M1U2 / Unit 2", title: "How does it feel?", status: "匹配", sources: "Joyee、学霸网、21世纪教育网、一口网" },
+      { module: "Module 1 Using my five senses", unit: "M1U3 / Unit 3", title: "Look at the shadow!", status: "匹配", sources: "Joyee、学霸网、21世纪教育网、一口网" },
+      { module: "Module 2 My favourite things", unit: "M2U1 / Unit 4", title: "Sports", status: "匹配", sources: "Joyee、学霸网、21世纪教育网、一口网" },
+      { module: "Module 2 My favourite things", unit: "M2U2 / Unit 5", title: "Cute animals", status: "匹配", sources: "Joyee、学霸网、21世纪教育网、一口网" },
+      { module: "Module 2 My favourite things", unit: "M2U3 / Unit 6", title: "Home life", status: "匹配", sources: "Joyee、学霸网、21世纪教育网、一口网" },
+      { module: "Module 3 Things around us", unit: "M3U1 / Unit 7", title: "Sounds", status: "匹配", sources: "Joyee、学霸网、21世纪教育网、一口网" },
+      { module: "Module 3 Things around us", unit: "M3U2 / Unit 8", title: "Time", status: "匹配", sources: "Joyee、学霸网、21世纪教育网、一口网" },
+      { module: "Module 3 Things around us", unit: "M3U3 / Unit 9", title: "Days of the week", status: "匹配", sources: "Joyee、学霸网、21世纪教育网、一口网" },
+      { module: "Module 4 More things to learn", unit: "M4U1 / Unit 10", title: "A Music class", status: "匹配", sources: "Joyee、学霸网、21世纪教育网、一口网" },
+      { module: "Module 4 More things to learn", unit: "M4U2 / Unit 11", title: "Festivals in China", status: "匹配", sources: "Joyee、学霸网、21世纪教育网、一口网" },
+      { module: "Module 4 More things to learn", unit: "M4U3 / Unit 12", title: "Story time", status: "匹配", sources: "Joyee、学霸网、21世纪教育网、一口网" }
+    ];
+
+    const unitEnhancements = {
+      1: {
+        verifiedGrammar: ["名词和量词：juice 是不可数名词，常用 a glass of 表数量。", "选择疑问句：Is it ... or ...? 回答时选其中一个，不用 yes/no。", "感官动词：taste/smell 后接形容词，如 sweet、sour、nice。"],
+        practiceDirections: ["词汇默写：水果、味道、颜色形状。", "句型替换：Is it ... or ...?", "选择题：taste/smell + adjective。", "补全对话：猜水果。", "阅读理解：The fox and the grapes。", "短写作：My favourite fruit。"],
+        quiz: [
+          { type: "词汇", prompt: "根据中文写英文：闻；嗅。", answer: "smell" },
+          { type: "词汇", prompt: "根据中文写英文：一杯果汁。", answer: "a glass of juice" },
+          { type: "词汇", prompt: "写出 sour 的中文意思。", answer: "酸的" },
+          { type: "词汇", prompt: "根据中文写英文：葡萄。", answer: "grape" },
+          { type: "语法", prompt: "选择：It tastes ______. A. sweet B. sweetly", answer: "A. sweet" },
+          { type: "语法", prompt: "填空：Is it cherry juice ______ watermelon juice?", answer: "or" },
+          { type: "语法", prompt: "填空：These grapes ______ purple and round.", answer: "are" },
+          { type: "句型", prompt: "填空：It's watermelon juice, I ______.", answer: "think" },
+          { type: "连词成句", prompt: "does / taste / How / it / ?", answer: "How does it taste?" },
+          { type: "表达", prompt: "用 3 句英文描述一种水果。", answer: "参考：It is red. It smells nice. It tastes sweet. 评分：颜色/形状/味道至少写到两项。", open: true }
+        ]
+      },
+      2: {
+        verifiedGrammar: ["Whose 提问所属关系：Whose knife is this?", "名词所有格：Danny's 表示“Danny 的”。", "this/these 与 is/are 对应：this knife is，these pencils are。"],
+        practiceDirections: ["词汇默写：触感形容词。", "句型替换：Whose ... is/are ...?", "选择题：this/these + is/are。", "补全对话：失物招领。", "阅读理解：The blind men and the elephant。", "短写作：A thing in my bag。"],
+        quiz: [
+          { type: "词汇", prompt: "根据中文写英文：柔软的。", answer: "soft" },
+          { type: "词汇", prompt: "根据中文写英文：锋利的。", answer: "sharp" },
+          { type: "词汇", prompt: "写出 smooth 的中文意思。", answer: "光滑的" },
+          { type: "词汇", prompt: "根据中文写英文：谁的。", answer: "whose" },
+          { type: "语法", prompt: "选择：Whose pencils ______ these? A. is B. are", answer: "B. are" },
+          { type: "语法", prompt: "填空：It's ______ pencil. (Danny)", answer: "Danny's" },
+          { type: "语法", prompt: "选择：______ knife is this? A. Who B. Whose", answer: "B. Whose" },
+          { type: "句型", prompt: "根据答句写问句：It's Peter's ruler.", answer: "Whose ruler is this?" },
+          { type: "连词成句", prompt: "does / it / feel / How / ?", answer: "How does it feel?" },
+          { type: "表达", prompt: "用 3 句英文描述一个文具的触感和归属。", answer: "参考：This is my pencil. It is long. It is hard and smooth. 评分：至少包含所属和触感。", open: true }
+        ]
+      },
+      3: {
+        verifiedGrammar: ["时间介词：in the morning/evening，at noon。", "位置介词：behind、in front of、on。", "一般现在时三单：The sun rises/goes/grows..."],
+        practiceDirections: ["词汇默写：自然和位置词。", "句型替换：The shadow is ...", "选择题：in/at/on。", "看图说话：太阳和影子。", "阅读理解：shadow changes。", "短写作：A tree's shadow。"],
+        quiz: [
+          { type: "词汇", prompt: "根据中文写英文：影子。", answer: "shadow" },
+          { type: "词汇", prompt: "根据中文写英文：在……后面。", answer: "behind" },
+          { type: "词汇", prompt: "写出 at noon 的中文意思。", answer: "在中午" },
+          { type: "词汇", prompt: "根据中文写英文：落下。", answer: "go down" },
+          { type: "语法", prompt: "选择：The sun ______ behind the hill. A. rise B. rises", answer: "B. rises" },
+          { type: "语法", prompt: "填空：______ noon, the sun is high in the sky.", answer: "At" },
+          { type: "语法", prompt: "填空：The tree's shadow is ______ the lawn.", answer: "on" },
+          { type: "句型", prompt: "改写：The shadow is long. 用 grows 表达。", answer: "The shadow grows long." },
+          { type: "连词成句", prompt: "at / the / Look / shadow / .", answer: "Look at the shadow." },
+          { type: "表达", prompt: "用 morning、noon、evening 各写一句影子的变化。", answer: "参考：In the morning, the shadow is long. At noon, it is short. In the evening, it grows long again. 评分：三个时间点都要出现。", open: true }
+        ]
+      },
+      4: {
+        verifiedGrammar: ["like 后接动名词：like playing badminton。", "Would you like to ...? 表邀请，回答可用 I'd love to。", "Does + 第三人称 + 动词原形：Does Alice like playing badminton?"],
+        practiceDirections: ["词汇默写：球类运动和俱乐部词。", "句型替换：Do you like playing ...?", "选择题：like doing / would like to do。", "补全对话：邀请加入俱乐部。", "阅读理解：school club notice。", "短写作：My favourite sport。"],
+        quiz: [
+          { type: "词汇", prompt: "根据中文写英文：羽毛球。", answer: "badminton" },
+          { type: "词汇", prompt: "根据中文写英文：加入俱乐部。", answer: "join the club" },
+          { type: "词汇", prompt: "写出 favourite 的中文意思。", answer: "最喜欢的" },
+          { type: "词汇", prompt: "根据中文写英文：打乒乓球。", answer: "play table tennis" },
+          { type: "语法", prompt: "选择：I like ______ football. A. play B. playing", answer: "B. playing" },
+          { type: "语法", prompt: "填空：Would you like ______ join us?", answer: "to" },
+          { type: "语法", prompt: "选择：Does Alice ______ badminton? A. likes playing B. like playing", answer: "B. like playing" },
+          { type: "句型", prompt: "根据答句写问句：Yes, I do. I like playing volleyball.", answer: "Do you like playing volleyball?" },
+          { type: "连词成句", prompt: "join / Let's / together / the club / .", answer: "Let's join the club together." },
+          { type: "表达", prompt: "用 4 句英文介绍你喜欢的运动。", answer: "参考：I like playing basketball. It is fun. I play it with my friends. It is my favourite sport. 评分：要有运动名和喜欢原因。", open: true }
+        ]
+      },
+      5: {
+        verifiedGrammar: ["特殊疑问句：What does ... eat/like?", "三单肯定句：She eats fish. He likes bones.", "does 问句中动词用原形：Does he like dog food?"],
+        practiceDirections: ["词汇默写：动物和食物。", "句型替换：What does ... eat?", "选择题：does 后动词原形。", "补全对话：宠物吃什么。", "阅读理解：cute animals。", "短写作：My pet。"],
+        quiz: [
+          { type: "词汇", prompt: "根据中文写英文：骨头。", answer: "bone" },
+          { type: "词汇", prompt: "根据中文写英文：猫粮。", answer: "cat food" },
+          { type: "词汇", prompt: "写出 hungry 的中文意思。", answer: "饥饿的" },
+          { type: "词汇", prompt: "根据中文写英文：乌龟。", answer: "tortoise" },
+          { type: "语法", prompt: "选择：She ______ fish every day. A. eat B. eats", answer: "B. eats" },
+          { type: "语法", prompt: "填空：What ______ Sam like?", answer: "does" },
+          { type: "语法", prompt: "选择：Does he ______ dog food? A. likes B. like", answer: "B. like" },
+          { type: "句型", prompt: "根据答句写问句：She eats a large bowl of cat food.", answer: "What does she eat?" },
+          { type: "连词成句", prompt: "does / What / eat / she / ?", answer: "What does she eat?" },
+          { type: "表达", prompt: "用 4 句英文介绍一种动物吃什么、喜欢什么。", answer: "参考：A cat is cute. It eats cat food. It likes fish. It doesn't like bones. 评分：至少有 eat 和 like 两类句子。", open: true }
+        ]
+      },
+      6: {
+        verifiedGrammar: ["现在进行时：am/is/are + 动词-ing。", "usually 与 now 对比：usually 表习惯，now 表正在发生。", "地点介词短语：in the living room/kitchen。"],
+        practiceDirections: ["词汇默写：房间和家庭动作。", "句型替换：I'm ...ing。", "选择题：be + doing。", "补全对话：Where are you? What are you doing?", "阅读理解：Earth Hour。", "短写作：My family at home。"],
+        quiz: [
+          { type: "词汇", prompt: "根据中文写英文：客厅。", answer: "living room" },
+          { type: "词汇", prompt: "根据中文写英文：做作业。", answer: "do my homework" },
+          { type: "词汇", prompt: "写出 turn off 的中文意思。", answer: "关掉" },
+          { type: "词汇", prompt: "根据中文写英文：厨房。", answer: "kitchen" },
+          { type: "语法", prompt: "选择：I ______ doing my homework. A. am B. is", answer: "A. am" },
+          { type: "语法", prompt: "填空：She is ______ dinner. (cook)", answer: "cooking" },
+          { type: "语法", prompt: "选择：We usually watch TV, but now we ______ at the stars. A. look B. are looking", answer: "B. are looking" },
+          { type: "句型", prompt: "根据答句写问句：I'm in the bathroom.", answer: "Where are you?" },
+          { type: "连词成句", prompt: "model plane / making / a / I'm / .", answer: "I'm making a model plane." },
+          { type: "表达", prompt: "用 5 句英文写 My family at home，至少 3 句用现在进行时。", answer: "参考：My father is cooking dinner. My mother is reading. I am doing my homework. We are happy. 评分：至少 3 个 be + doing 结构。", open: true }
+        ]
+      },
+      7: {
+        verifiedGrammar: ["现在进行时一般疑问句：Are they playing...? Is it ringing?", "祈使句：Be careful. Be quiet.", "too + 形容词：too loud / too quiet。"],
+        practiceDirections: ["词汇默写：声音词和物品词。", "句型替换：Are they ...ing?", "选择题：is/are + doing。", "补全对话：判断声音来源。", "阅读理解：noisy outside。", "短写作：Sounds around me。"],
+        quiz: [
+          { type: "词汇", prompt: "根据中文写英文：安静的。", answer: "quiet" },
+          { type: "词汇", prompt: "根据中文写英文：门铃。", answer: "doorbell" },
+          { type: "词汇", prompt: "写出 noisy 的中文意思。", answer: "吵闹的" },
+          { type: "词汇", prompt: "根据中文写英文：听见。", answer: "hear" },
+          { type: "语法", prompt: "选择：Are they ______ basketball? A. play B. playing", answer: "B. playing" },
+          { type: "语法", prompt: "填空：No, they ______.", answer: "aren't" },
+          { type: "语法", prompt: "选择：______ quiet, please. A. Be B. Is", answer: "A. Be" },
+          { type: "句型", prompt: "填空：It's ______ loud. I can't hear you.", answer: "too" },
+          { type: "连词成句", prompt: "doorbell / Is / ringing / the / ?", answer: "Is the doorbell ringing?" },
+          { type: "表达", prompt: "用 4 句英文写你在家能听到的声音。", answer: "参考：I can hear the doorbell. It is loud. I can hear the TV. It is too noisy. 评分：至少写到两个 sound。", open: true }
+        ]
+      },
+      8: {
+        verifiedGrammar: ["钟点表达：o'clock、quarter past、half past、quarter to。", "问时间：What time is it?", "It's time for + 名词；I'm late 表迟到。"],
+        practiceDirections: ["词汇默写：时间和作息。", "句型替换：What time is it?", "选择题：past/to。", "补全对话：早晨起床。", "阅读理解：Kitty's day。", "短写作：My morning。"],
+        quiz: [
+          { type: "词汇", prompt: "根据中文写英文：七点钟。", answer: "seven o'clock" },
+          { type: "词汇", prompt: "根据中文写英文：刷牙。", answer: "brush my teeth" },
+          { type: "词汇", prompt: "写出 half past seven 的中文意思。", answer: "七点半" },
+          { type: "词汇", prompt: "根据中文写英文：迟到的。", answer: "late" },
+          { type: "语法", prompt: "选择：7:45 is ______. A. a quarter past seven B. a quarter to eight", answer: "B. a quarter to eight" },
+          { type: "语法", prompt: "填空：What ______ is it?", answer: "time" },
+          { type: "语法", prompt: "选择：It's time ______ breakfast. A. for B. to", answer: "A. for" },
+          { type: "句型", prompt: "根据答句写问句：It's half past seven.", answer: "What time is it?" },
+          { type: "连词成句", prompt: "brushing / my / I'm / teeth / .", answer: "I'm brushing my teeth." },
+          { type: "表达", prompt: "用 5 句英文写你的早晨作息。", answer: "参考：I get up at seven. I brush my teeth. I wash my face. I have breakfast. I go to school. 评分：至少有 3 个作息短语。", open: true }
+        ]
+      },
+      9: {
+        verifiedGrammar: ["频率副词：always、usually、often、sometimes、never。", "频率副词位置：实义动词前，be 动词后。", "星期前用 on：on Monday；范围用 from ... to ...。"],
+        practiceDirections: ["词汇默写：星期和频率副词。", "句型替换：I always ... on Monday。", "选择题：on/from-to。", "补全对话：周末活动。", "阅读理解：Betty's week。", "短写作：My week。"],
+        quiz: [
+          { type: "词汇", prompt: "根据中文写英文：星期三。", answer: "Wednesday" },
+          { type: "词汇", prompt: "根据中文写英文：从不。", answer: "never" },
+          { type: "词汇", prompt: "写出 at weekends 的中文意思。", answer: "在周末" },
+          { type: "词汇", prompt: "根据中文写英文：忙碌的。", answer: "busy" },
+          { type: "语法", prompt: "选择：I am ______ busy on Monday. A. always B. after", answer: "A. always" },
+          { type: "语法", prompt: "填空：Peter goes to school ______ Monday to Friday.", answer: "from" },
+          { type: "语法", prompt: "选择：I play chess ______ Sunday. A. on B. in", answer: "A. on" },
+          { type: "句型", prompt: "改写：I go to the library. 加上 usually。", answer: "I usually go to the library." },
+          { type: "连词成句", prompt: "never / busy / I'm / Sunday / on / .", answer: "I'm never busy on Sunday." },
+          { type: "表达", prompt: "用 7 句英文写 My week，每句包含一个星期。", answer: "参考：I am busy on Monday. I play chess on Tuesday... 评分：七个星期至少写出五个，频率副词至少两个。", open: true }
+        ]
+      },
+      10: {
+        verifiedGrammar: ["can 表能力，后接动词原形。", "play + the + 乐器：play the violin/piano/drum。", "位置介词 behind/beside 复习。"],
+        practiceDirections: ["词汇默写：乐器和音乐词。", "句型替换：What can you play?", "选择题：can + 动词原形。", "补全对话：Music class。", "阅读理解：the sound of music。", "短写作：My music class。"],
+        quiz: [
+          { type: "词汇", prompt: "根据中文写英文：小提琴。", answer: "violin" },
+          { type: "词汇", prompt: "根据中文写英文：鼓。", answer: "drum" },
+          { type: "词汇", prompt: "写出 instrument 的中文意思。", answer: "乐器；器具" },
+          { type: "词汇", prompt: "根据中文写英文：在……旁边。", answer: "beside" },
+          { type: "语法", prompt: "选择：I can ______ the piano. A. play B. playing", answer: "A. play" },
+          { type: "语法", prompt: "填空：I can play ______ violin.", answer: "the" },
+          { type: "语法", prompt: "选择：What can you ______? A. plays B. play", answer: "B. play" },
+          { type: "句型", prompt: "根据答句写问句：I can play the drum.", answer: "What can you play?" },
+          { type: "连词成句", prompt: "is / piano / beside / the / It / .", answer: "It is beside the piano." },
+          { type: "表达", prompt: "用 4 句英文介绍一节音乐课。", answer: "参考：It is Music class. I can play the violin. My friend can play the drum. We like music. 评分：至少使用 can 和一个乐器词。", open: true }
+        ]
+      },
+      11: {
+        verifiedGrammar: ["节日名称前常用 the：the Spring Festival。", "during 表“在……期间”。", "usually 描述节日习惯活动；like eating 表喜欢吃。"],
+        practiceDirections: ["词汇默写：中国节日和食物。", "句型替换：What do you usually do during ...?", "选择题：during/on/the。", "补全对话：favourite festival。", "阅读理解：Chinese festivals。", "短写作：My favourite festival。"],
+        quiz: [
+          { type: "词汇", prompt: "根据中文写英文：春节。", answer: "the Spring Festival" },
+          { type: "词汇", prompt: "根据中文写英文：月饼。", answer: "mooncake" },
+          { type: "词汇", prompt: "写出 relative 的中文意思。", answer: "亲戚" },
+          { type: "词汇", prompt: "根据中文写英文：传统的。", answer: "traditional" },
+          { type: "语法", prompt: "选择：I like ______ Spring Festival. A. the B. a", answer: "A. the" },
+          { type: "语法", prompt: "填空：What do you usually do ______ the Spring Festival?", answer: "during" },
+          { type: "语法", prompt: "选择：I like ______ rice dumplings. A. eat B. eating", answer: "B. eating" },
+          { type: "句型", prompt: "根据答句写问句：I like the Mid-autumn Festival.", answer: "What festival do you like?" },
+          { type: "连词成句", prompt: "usually / grandparents / visit / I / my / .", answer: "I usually visit my grandparents." },
+          { type: "表达", prompt: "用 5 句英文介绍一个中国节日。", answer: "参考：I like the Spring Festival. It is important. I usually visit my grandparents. We have a big dinner. I get red envelopes. 评分：节日名、食物/活动至少各一项。", open: true }
+        ]
+      },
+      12: {
+        verifiedGrammar: ["there be 句型：There is/are ... in ...。", "序数词：four -> fourth。", "故事叙述中可结合一般现在时和现在进行时。"],
+        practiceDirections: ["词汇默写：故事角色和形容词。", "句型替换：There is/are ...", "选择题：is/are、four/fourth。", "补全故事：The ugly duckling。", "阅读理解：story order。", "短写作：Retell the story。"],
+        quiz: [
+          { type: "词汇", prompt: "根据中文写英文：小鸭子。", answer: "duckling" },
+          { type: "词汇", prompt: "根据中文写英文：天鹅。", answer: "swan" },
+          { type: "词汇", prompt: "写出 lonely 的中文意思。", answer: "孤独的" },
+          { type: "词汇", prompt: "根据中文写英文：第四。", answer: "fourth" },
+          { type: "语法", prompt: "选择：There ______ four eggs in the nest. A. is B. are", answer: "B. are" },
+          { type: "语法", prompt: "填空：Mother Duck is ______ a nest. (make)", answer: "making" },
+          { type: "语法", prompt: "选择：The ______ egg is big and white. A. four B. fourth", answer: "B. fourth" },
+          { type: "句型", prompt: "改写：A pond is behind the tree. 用 There be 开头。", answer: "There is a pond behind the tree." },
+          { type: "连词成句", prompt: "ugly / is / He / and / grey / .", answer: "He is ugly and grey." },
+          { type: "表达", prompt: "用 6 句英文复述 Unit 12 故事。", answer: "参考：Mother Duck has eggs. One egg is big. The duckling is grey. He is lonely. Later he looks into the pond. He is a swan. 评分：故事顺序清楚，至少 6 句。", open: true }
+        ]
+      }
+    };
+
+    const grammarChecklist = [
+      "能用 It tastes/smells/feels ... 描述味道、气味、触感。",
+      "能区分 this/that/these/those 和单复数。",
+      "能用 Whose ... is/are ...? 问物品归属。",
+      "能用一般现在时三单：She likes ... / He eats ... / The sun rises ...",
+      "能用现在进行时：I am ...ing / Are they ...ing?",
+      "能表达喜好：like + -ing。",
+      "能表达邀请：Would you like to ...?",
+      "能表达能力：can + 动词原形。",
+      "能用频率副词：always, usually, often, sometimes, never。",
+      "能说时间和星期：at seven o'clock / on Monday。",
+      "能用 there is/are 描述场景。",
+      "能用 during 和 on 介绍节日活动。"
+    ];
+
+    const weeksRoot = document.getElementById("weeks");
+    const checklistRoot = document.getElementById("grammarChecklist");
+    const auditTable = document.getElementById("auditTable");
+    const weeklyTestsRoot = document.getElementById("weeklyTests");
+    const searchInput = document.getElementById("searchInput");
+    const tabs = Array.from(document.querySelectorAll("[data-filter]"));
+    const emptyState = document.getElementById("emptyState");
+    const progressFill = document.getElementById("progressFill");
+    const progressText = document.getElementById("progressText");
+    const doneCount = document.getElementById("doneCount");
+
+    function iconCheck() {
+      return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true" style="width:16px;height:16px"><path d="m5 12 4 4L19 6"></path></svg>';
+    }
+
+    function chips(items, strong) {
+      return items.map(function (item) {
+        return '<span class="chip' + (strong ? ' strong' : '') + '">' + item + '</span>';
+      }).join("");
+    }
+
+    function list(items) {
+      return items.map(function (item) {
+        return '<li>' + item + '</li>';
+      }).join("");
+    }
+
+    function enhancedUnit(unit) {
+      return Object.assign({}, unit, unitEnhancements[unit.id] || {});
+    }
+
+    function renderAudit() {
+      auditTable.innerHTML = sourceAudit.map(function (item) {
+        return [
+          '<article class="audit-row">',
+          '  <div><strong>' + item.unit + '</strong><span>' + item.module + '</span></div>',
+          '  <div><strong>' + item.title + '</strong><span>' + item.sources + '</span></div>',
+          '  <span class="status-ok">' + item.status + '</span>',
+          '</article>'
+        ].join("");
+      }).join("");
+    }
+
+    function directionItems(items) {
+      return items.map(function (item) {
+        return '<div class="direction-item">' + item + '</div>';
+      }).join("");
+    }
+
+    function renderQuiz(questions, prefix) {
+      return '<div class="quiz-list">' + questions.map(function (question, index) {
+        const label = prefix + "-" + (index + 1);
+        return [
+          '<article class="quiz-question">',
+          '  <div class="quiz-head">',
+          '    <div><span class="quiz-type">' + question.type + '</span><p class="quiz-prompt">' + (index + 1) + '. ' + question.prompt + '</p></div>',
+          '    <button class="answer-toggle" type="button" data-answer-toggle>看答案</button>',
+          '  </div>',
+          '  <div class="answer-panel" id="answer-' + label + '"><strong>答案：</strong>' + question.answer + '</div>',
+          '</article>'
+        ].join("");
+      }).join("") + '</div>';
+    }
+
+    function getWeeklyQuestions(week) {
+      const selectedIndexes = [0, 1, 4, 5, 8];
+      return week.units.flatMap(function (unit) {
+        const enhanced = enhancedUnit(unit);
+        return selectedIndexes.map(function (questionIndex) {
+          const question = enhanced.quiz[questionIndex];
+          return Object.assign({}, question, {
+            prompt: "Unit " + enhanced.id + "｜" + question.prompt
+          });
+        });
+      });
+    }
+
+    function renderWeeklyTests() {
+      weeklyTestsRoot.innerHTML = weeks.map(function (week) {
+        return [
+          '<section class="review-card">',
+          '  <p class="eyebrow">' + week.range + '</p>',
+          '  <h3>' + week.title + ' 综合小测</h3>',
+          '  <p class="subtitle">共 15 题：每个 Unit 抽取 5 题，覆盖词汇、语法和连词成句。</p>',
+          renderQuiz(getWeeklyQuestions(week), "week-" + week.id),
+          '</section>'
+        ].join("");
+      }).join("");
+    }
+
+    function unitCard(unit, weekId) {
+      return [
+        '<article class="unit-card" id="unit-' + unit.id + '" data-week="' + weekId + '" data-search="' + encodeURIComponent(JSON.stringify(unit).toLowerCase()) + '">',
+        '  <div class="unit-top">',
+        '    <div><span class="unit-number">Unit ' + unit.id + '</span><h3>' + unit.title + '</h3></div>',
+        '    <label class="complete"><input type="checkbox" data-complete="' + unit.id + '">完成</label>',
+        '  </div>',
+        '  <p class="focus-line">' + unit.focus + '</p>',
+        '  <section class="section"><h4>语法重点</h4><ul class="bullets">' + list(unit.grammar) + '</ul></section>',
+        '  <section class="section"><h4>中文资料校对后的语法重点</h4><ul class="bullets">' + list(unit.verifiedGrammar || []) + '</ul></section>',
+        '  <section class="section"><h4>必会听写词</h4><div class="chips">' + chips(unit.vocab, true) + '</div></section>',
+        '  <section class="section"><h4>认读拓展词</h4><div class="chips">' + chips(unit.extra, false) + '</div></section>',
+        '  <section class="section"><h4>推荐练习方向</h4><div class="direction-grid">' + directionItems(unit.practiceDirections || []) + '</div></section>',
+        '  <section class="section"><h4>家庭练习</h4><div class="practice">' + unit.practice + '</div></section>',
+        '  <section class="section"><h4>易错点</h4><ul class="bullets">' + list(unit.mistakes) + '</ul></section>',
+        '  <section class="section"><h4>Unit ' + unit.id + ' 自编测验题</h4>' + renderQuiz(unit.quiz || [], "unit-" + unit.id) + '</section>',
+        '</article>'
+      ].join("");
+    }
+
+    function render() {
+      renderAudit();
+      weeksRoot.innerHTML = weeks.map(function (week) {
+        return [
+          '<section class="week" id="week-' + week.id + '" data-week-section="' + week.id + '">',
+          '  <header class="week-header">',
+          '    <div><p class="eyebrow">' + week.range + '</p><h2>' + week.title + '</h2><p>' + week.goal + '</p></div>',
+          '    <span class="week-pill">每周 3 个单元</span>',
+          '  </header>',
+          '  <div class="unit-grid">' + week.units.map(function (unit) { return unitCard(enhancedUnit(unit), week.id); }).join("") + '</div>',
+          '  <section class="review-card"><p class="eyebrow">本周复盘</p><ul class="bullets">' + list(week.review) + '</ul></section>',
+          '</section>'
+        ].join("");
+      }).join("");
+
+      renderWeeklyTests();
+
+      checklistRoot.innerHTML = grammarChecklist.map(function (item, index) {
+        return '<label class="check-item"><input type="checkbox" data-checklist="' + index + '"><span>' + item + '</span></label>';
+      }).join("");
+
+      restoreProgress();
+      applyFilters();
+    }
+
+    function updateProgress() {
+      const checks = Array.from(document.querySelectorAll("[data-complete]"));
+      const done = checks.filter(function (input) { return input.checked; }).length;
+      const percent = Math.round((done / checks.length) * 100);
+      progressFill.style.width = percent + "%";
+      doneCount.textContent = done + "/" + checks.length;
+      progressText.textContent = done ? "已完成 " + done + " 个单元，还剩 " + (checks.length - done) + " 个。" : "还没有勾选完成的单元。";
+      const saved = {};
+      checks.forEach(function (input) {
+        saved[input.dataset.complete] = input.checked;
+      });
+      localStorage.setItem("english4bUnitProgress", JSON.stringify(saved));
+    }
+
+    function restoreProgress() {
+      let saved = {};
+      try {
+        saved = JSON.parse(localStorage.getItem("english4bUnitProgress") || "{}");
+      } catch (error) {
+        saved = {};
+      }
+
+      document.querySelectorAll("[data-complete]").forEach(function (input) {
+        input.checked = Boolean(saved[input.dataset.complete]);
+        input.addEventListener("change", updateProgress);
+      });
+      updateProgress();
+    }
+
+    function currentWeekFilter() {
+      const active = tabs.find(function (tab) { return tab.classList.contains("is-active"); });
+      return active ? active.dataset.filter : "all";
+    }
+
+    function applyFilters() {
+      const weekFilter = currentWeekFilter();
+      const keyword = searchInput.value.trim().toLowerCase();
+      let visibleCount = 0;
+
+      document.querySelectorAll(".week").forEach(function (weekSection) {
+        const weekId = weekSection.dataset.weekSection;
+        const weekAllowed = weekFilter === "all" || weekFilter === weekId;
+        let weekHasVisibleUnit = false;
+
+        weekSection.querySelectorAll(".unit-card").forEach(function (card) {
+          const searchText = decodeURIComponent(card.dataset.search || "");
+          const match = weekAllowed && (!keyword || searchText.includes(keyword));
+          card.classList.toggle("is-hidden", !match);
+          if (match) {
+            visibleCount += 1;
+            weekHasVisibleUnit = true;
+          }
+        });
+
+        weekSection.style.display = weekAllowed && weekHasVisibleUnit ? "" : "none";
+      });
+
+      emptyState.classList.toggle("is-visible", visibleCount === 0);
+    }
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        tabs.forEach(function (item) { item.classList.remove("is-active"); });
+        tab.classList.add("is-active");
+        applyFilters();
+      });
+    });
+
+    searchInput.addEventListener("input", applyFilters);
+
+    document.getElementById("printPage").addEventListener("click", function () {
+      window.print();
+    });
+
+    document.getElementById("resetProgress").addEventListener("click", function () {
+      localStorage.removeItem("english4bUnitProgress");
+      document.querySelectorAll("[data-complete]").forEach(function (input) {
+        input.checked = false;
+      });
+      updateProgress();
+    });
+
+    document.addEventListener("click", function (event) {
+      const button = event.target.closest("[data-answer-toggle]");
+      if (!button) {
+        return;
+      }
+
+      const answer = button.closest(".quiz-question").querySelector(".answer-panel");
+      const isOpen = answer.classList.toggle("is-open");
+      button.textContent = isOpen ? "收起答案" : "看答案";
+    });
+
+    const progressiveWordMeanings = {
+      "a glass of": "一杯",
+      "activity": "活动",
+      "again": "又；再",
+      "all": "所有的",
+      "always": "总是",
+      "angry": "生气的",
+      "animal": "动物",
+      "baby-babies": "宝宝；婴儿",
+      "badminton": "羽毛球",
+      "basketball": "篮球",
+      "bathroom": "卫生间",
+      "beach": "海滩",
+      "bedroom": "卧室",
+      "bedtime": "就寝时间",
+      "behind": "在……后面",
+      "bell": "铃；钟铃",
+      "bench": "长椅",
+      "beside": "在……旁边",
+      "bicycle": "自行车",
+      "bitter": "苦的",
+      "blunt": "钝的；不锋利的",
+      "bone": "骨头",
+      "bowl": "碗",
+      "breakfast": "早餐",
+      "brush my teeth": "刷牙",
+      "busy": "忙碌的",
+      "careful": "小心的",
+      "cat food": "猫粮",
+      "catch": "追上；抓住",
+      "chat": "聊天",
+      "cherry": "樱桃",
+      "city": "城市",
+      "classmate": "同学",
+      "clock": "时钟",
+      "club": "俱乐部",
+      "crunchy": "爽脆的",
+      "cute": "可爱的",
+      "different": "不同的",
+      "dinner": "晚餐",
+      "dog food": "狗粮",
+      "doorbell": "门铃",
+      "drum": "鼓",
+      "duckling": "小鸭子",
+      "during": "在……期间",
+      "egg": "蛋",
+      "else": "别的；其他的",
+      "favourite": "最喜欢的",
+      "feed": "喂",
+      "feel": "感觉；摸起来",
+      "festival": "节日",
+      "fireworks": "烟花",
+      "fish": "鱼",
+      "follow": "跟随",
+      "football": "足球",
+      "forty": "四十",
+      "fourth": "第四",
+      "free": "空闲的",
+      "Friday": "星期五",
+      "fruit": "水果",
+      "get up": "起床",
+      "go down": "落下",
+      "grape": "葡萄",
+      "green": "绿色的",
+      "grey": "灰色的",
+      "grow": "变得；生长",
+      "guess": "猜",
+      "half": "一半",
+      "happen": "发生",
+      "happy": "快乐的",
+      "hard": "坚硬的；硬的",
+      "have breakfast": "吃早餐",
+      "healthy": "健康的",
+      "hear": "听见",
+      "heavy": "重的",
+      "high": "高的",
+      "hill": "小山；山丘",
+      "homework": "作业",
+      "holiday": "假期",
+      "hungry": "饥饿的",
+      "important": "重要的",
+      "in front of": "在……前面",
+      "instrument": "乐器",
+      "join": "加入；参加",
+      "juice": "果汁",
+      "key": "钥匙",
+      "kitchen": "厨房",
+      "knife": "小刀",
+      "large": "大的",
+      "late": "迟到的",
+      "lawn": "草坪",
+      "leaf-leaves": "叶子",
+      "light": "灯；轻的",
+      "living room": "客厅",
+      "lonely": "孤独的",
+      "loud": "大声的；响亮的",
+      "lovely": "可爱的",
+      "lunch": "午饭",
+      "meat": "肉",
+      "mice": "老鼠（mouse 的复数）",
+      "model plane": "飞机模型",
+      "Monday": "星期一",
+      "mooncake": "月饼",
+      "mouse": "老鼠",
+      "music": "音乐",
+      "musical": "音乐的",
+      "nest": "巢；窝",
+      "never": "从不",
+      "noise": "噪音",
+      "noisy": "吵闹的",
+      "noon": "中午",
+      "o'clock": "……点钟",
+      "often": "经常",
+      "old people": "老人",
+      "outside": "在外面",
+      "parrot": "鹦鹉",
+      "path": "小路",
+      "peach": "桃子",
+      "pencil": "铅笔",
+      "pencil case": "铅笔袋；铅笔盒",
+      "piano": "钢琴",
+      "plum": "李子；梅子",
+      "pond": "池塘",
+      "poster": "海报",
+      "purple": "紫色的",
+      "quarter": "一刻",
+      "quiet": "安静的",
+      "red envelope": "红包",
+      "relative": "亲戚",
+      "remember": "记得",
+      "rice dumpling": "粽子",
+      "ring": "响铃",
+      "rise": "升起",
+      "rough": "粗糙的",
+      "round": "圆的",
+      "sad": "伤心的",
+      "sand": "沙子",
+      "Saturday": "星期六",
+      "shadow": "影子",
+      "sharp": "锋利的",
+      "shoe": "鞋",
+      "shape": "形状",
+      "smell": "闻；嗅",
+      "smooth": "光滑的",
+      "soft": "柔软的",
+      "sometimes": "有时",
+      "sound": "声音",
+      "sour": "酸的",
+      "sport": "体育运动",
+      "spring": "春天",
+      "strawberry": "草莓",
+      "student": "学生",
+      "storybook": "故事书",
+      "sun": "太阳",
+      "Sunday": "星期日",
+      "sure": "当然",
+      "swan": "天鹅",
+      "sweet": "甜的",
+      "swimming goggles": "泳镜",
+      "swimsuit": "游泳衣",
+      "table tennis": "乒乓球",
+      "take off": "脱下",
+      "taste": "尝；品尝",
+      "television": "电视",
+      "the Double Ninth Festival": "重阳节",
+      "the Dragon Boat Festival": "端午节",
+      "the Mid-autumn Festival": "中秋节",
+      "the Spring Festival": "春节",
+      "thick": "厚的；粗的",
+      "thin": "薄的；细的",
+      "think": "认为",
+      "thirty": "三十",
+      "Thursday": "星期四",
+      "time": "时间",
+      "today": "今天",
+      "together": "一起",
+      "tomorrow": "明天",
+      "tortoise": "乌龟",
+      "traditional": "传统的",
+      "triangle": "三角铁",
+      "Tuesday": "星期二",
+      "turn off": "关掉",
+      "twenty": "二十",
+      "ugly": "丑的",
+      "usually": "通常",
+      "violin": "小提琴",
+      "volleyball": "排球",
+      "wash": "洗",
+      "wash my face": "洗脸",
+      "watch TV": "看电视",
+      "watermelon": "西瓜",
+      "Wednesday": "星期三",
+      "week": "周；星期",
+      "weekend": "周末",
+      "whose": "谁的",
+      "worm": "虫子"
+    };
+
+    function getProgressiveMeaning(word) {
+      const direct = progressiveWordMeanings[word];
+      if (direct) {
+        return direct;
+      }
+
+      const normalized = String(word || "").trim().toLowerCase();
+      const match = Object.keys(progressiveWordMeanings).find(function (key) {
+        return key.toLowerCase() === normalized;
+      });
+      return match ? progressiveWordMeanings[match] : "待复习词";
+    }
+
+    const progressiveGrammarDrills = {
+      1: [
+        { type: "感官动词", prompt: "选择：The apple tastes ______. A. sweet B. sweetly", answer: "A. sweet" },
+        { type: "选择疑问句", prompt: "填空：Is it cherry juice ______ watermelon juice?", answer: "or" },
+        { type: "量词", prompt: "翻译：一杯西瓜汁。", answer: "a glass of watermelon juice" },
+        { type: "指示代词", prompt: "选择：______ grapes are purple. A. This B. These", answer: "B. These" },
+        { type: "be 动词", prompt: "填空：Those grapes ______ sour.", answer: "are" },
+        { type: "推测表达", prompt: "补全句子：It's an apple, I ______.", answer: "think" },
+        { type: "感官动词", prompt: "改错：It tastes sourly.", answer: "It tastes sour." },
+        { type: "问味道", prompt: "根据答句写问句：It's sweet.", answer: "How does it taste?" },
+        { type: "选择疑问句", prompt: "按要求造句：用 peach / apple 写一个 or 问句。", answer: "Is it a peach or an apple?" },
+        { type: "综合", prompt: "翻译：这些葡萄又圆又甜。", answer: "These grapes are round and sweet." }
+      ],
+      2: [
+        { type: "Whose", prompt: "选择：______ pencil is this? A. Who B. Whose", answer: "B. Whose" },
+        { type: "所有格", prompt: "填空：It's ______ knife. (Danny)", answer: "Danny's" },
+        { type: "单复数", prompt: "选择：Whose pencils ______ these? A. is B. are", answer: "B. are" },
+        { type: "触感问答", prompt: "根据答句写问句：It's smooth.", answer: "How does it feel?" },
+        { type: "形容词", prompt: "选择：The knife is ______. A. sharp B. sharply", answer: "A. sharp" },
+        { type: "this/these", prompt: "填空：______ shoes are Peter's. (这些)", answer: "These" },
+        { type: "物主代词", prompt: "填空：This is my pencil. It is ______ pencil.", answer: "my" },
+        { type: "祈使句", prompt: "翻译：脱下你的鞋。", answer: "Take off your shoes." },
+        { type: "be 动词", prompt: "改错：These pencil are blunt.", answer: "These pencils are blunt." },
+        { type: "综合", prompt: "翻译：这是谁的钱包？", answer: "Whose purse is this?" }
+      ],
+      3: [
+        { type: "时间介词", prompt: "填空：______ noon, the sun is high.", answer: "At" },
+        { type: "时间介词", prompt: "选择：______ the morning. A. In B. At", answer: "A. In" },
+        { type: "三单", prompt: "选择：The sun ______ behind the hill. A. rise B. rises", answer: "B. rises" },
+        { type: "三单", prompt: "填空：The shadow ______ short. (grow)", answer: "grows" },
+        { type: "地点介词", prompt: "翻译：在小山后面。", answer: "behind the hill" },
+        { type: "地点介词", prompt: "翻译：在长椅上。", answer: "on the bench" },
+        { type: "祈使句", prompt: "连词成句：at / the / Look / shadow / .", answer: "Look at the shadow." },
+        { type: "自然规律", prompt: "翻译：太阳在晚上落下。", answer: "The sun goes down in the evening." },
+        { type: "介词辨析", prompt: "填空：The tree is ______ front of the house.", answer: "in" },
+        { type: "综合", prompt: "翻译：影子又变长了。", answer: "The shadow grows long again." }
+      ],
+      4: [
+        { type: "like doing", prompt: "选择：I like ______ badminton. A. play B. playing", answer: "B. playing" },
+        { type: "一般疑问句", prompt: "根据答句写问句：Yes, I do.", answer: "Do you like playing badminton?" },
+        { type: "would like", prompt: "填空：Would you like ______ join the club?", answer: "to" },
+        { type: "邀请回答", prompt: "补全：I'd ______ to.", answer: "love" },
+        { type: "三单疑问", prompt: "选择：Does Alice ______ playing badminton? A. like B. likes", answer: "A. like" },
+        { type: "Let's", prompt: "翻译：让我们一起加入俱乐部吧。", answer: "Let's join the club together." },
+        { type: "运动表达", prompt: "选择：play ______ football. A. / B. the", answer: "A. /" },
+        { type: "favourite", prompt: "翻译：它是我最喜欢的运动。", answer: "It's my favourite sport." },
+        { type: "三单肯定", prompt: "填空：Peter ______ playing basketball. (like)", answer: "likes" },
+        { type: "综合", prompt: "翻译：谁还想加入？", answer: "Who else would like to join?" }
+      ],
+      5: [
+        { type: "特殊疑问句", prompt: "填空：What ______ she eat?", answer: "does" },
+        { type: "三单肯定", prompt: "选择：She ______ fish. A. eat B. eats", answer: "B. eats" },
+        { type: "does 后原形", prompt: "选择：Does he ______ dog food? A. like B. likes", answer: "A. like" },
+        { type: "否定回答", prompt: "补全：No, he ______.", answer: "doesn't" },
+        { type: "like 三单", prompt: "填空：Sam ______ bones. (like)", answer: "likes" },
+        { type: "What does", prompt: "根据答句写问句：She eats cat food.", answer: "What does she eat?" },
+        { type: "not at all", prompt: "翻译：它一点也不喜欢狗粮。", answer: "It doesn't like dog food at all." },
+        { type: "形容词", prompt: "翻译：Ginger 很可爱。", answer: "Ginger is very cute." },
+        { type: "复数", prompt: "写出 leaf 的复数。", answer: "leaves" },
+        { type: "综合", prompt: "翻译：这只猫每天吃一大碗猫粮。", answer: "The cat eats a large bowl of cat food every day." }
+      ],
+      6: [
+        { type: "现在进行时", prompt: "选择：I ______ doing my homework. A. am B. is", answer: "A. am" },
+        { type: "现在进行时", prompt: "填空：She is ______ dinner. (cook)", answer: "cooking" },
+        { type: "现在进行时", prompt: "填空：We are ______ at the stars. (look)", answer: "looking" },
+        { type: "地点", prompt: "翻译：在客厅里。", answer: "in the living room" },
+        { type: "usually/now", prompt: "选择：I usually watch TV, but now I ______ a book. A. read B. am reading", answer: "B. am reading" },
+        { type: "Where", prompt: "根据答句写问句：I'm in the kitchen.", answer: "Where are you?" },
+        { type: "What doing", prompt: "根据答句写问句：I'm washing my hair.", answer: "What are you doing?" },
+        { type: "动词 ing", prompt: "写出 make 的现在分词。", answer: "making" },
+        { type: "短语", prompt: "翻译：关灯。", answer: "turn off the lights" },
+        { type: "综合", prompt: "翻译：我正在卧室里做飞机模型。", answer: "I'm making a model plane in my bedroom." }
+      ],
+      7: [
+        { type: "进行时疑问", prompt: "选择：Are they ______ volleyball? A. play B. playing", answer: "B. playing" },
+        { type: "否定回答", prompt: "补全：No, they ______.", answer: "aren't" },
+        { type: "单数进行时", prompt: "填空：Is the doorbell ______? (ring)", answer: "ringing" },
+        { type: "祈使句", prompt: "翻译：请安静。", answer: "Be quiet, please." },
+        { type: "too", prompt: "填空：It's ______ loud.", answer: "too" },
+        { type: "there be", prompt: "选择：There ______ some students outside. A. is B. are", answer: "B. are" },
+        { type: "sound/noisy", prompt: "选择：It's ______ outside. A. noisy B. noise", answer: "A. noisy" },
+        { type: "Be + adj", prompt: "翻译：小心。", answer: "Be careful." },
+        { type: "听见", prompt: "翻译：我能听见门铃。", answer: "I can hear the doorbell." },
+        { type: "综合", prompt: "翻译：他们正在打篮球吗？", answer: "Are they playing basketball?" }
+      ],
+      8: [
+        { type: "问时间", prompt: "根据答句写问句：It's half past seven.", answer: "What time is it?" },
+        { type: "时间表达", prompt: "选择：7:45 is ______. A. a quarter past seven B. a quarter to eight", answer: "B. a quarter to eight" },
+        { type: "time for", prompt: "填空：It's time ______ breakfast.", answer: "for" },
+        { type: "进行时", prompt: "填空：I'm ______ my teeth. (brush)", answer: "brushing" },
+        { type: "作息", prompt: "翻译：起床。", answer: "get up" },
+        { type: "at + time", prompt: "填空：I get up ______ seven o'clock.", answer: "at" },
+        { type: "late", prompt: "翻译：我迟到了。", answer: "I'm late." },
+        { type: "时间表达", prompt: "翻译：七点一刻。", answer: "a quarter past seven" },
+        { type: "时间表达", prompt: "翻译：七点半。", answer: "half past seven" },
+        { type: "综合", prompt: "翻译：现在几点了？", answer: "What time is it now?" }
+      ],
+      9: [
+        { type: "频率副词", prompt: "按频率从高到低写出：always, never, sometimes。", answer: "always, sometimes, never" },
+        { type: "副词位置", prompt: "选择：I am ______ busy. A. always B. after", answer: "A. always" },
+        { type: "副词位置", prompt: "填空：I ______ play chess on Friday. (usually)", answer: "usually" },
+        { type: "星期介词", prompt: "填空：I go to the library ______ Monday.", answer: "on" },
+        { type: "范围", prompt: "填空：from Monday ______ Friday", answer: "to" },
+        { type: "三单", prompt: "选择：Peter ______ to school. A. go B. goes", answer: "B. goes" },
+        { type: "weekends", prompt: "翻译：在周末。", answer: "at weekends" },
+        { type: "否定频率", prompt: "翻译：我星期天从不忙。", answer: "I'm never busy on Sunday." },
+        { type: "usually", prompt: "翻译：我通常很开心。", answer: "I'm usually happy." },
+        { type: "综合", prompt: "翻译：我从星期一到星期五上学。", answer: "I go to school from Monday to Friday." }
+      ],
+      10: [
+        { type: "can", prompt: "选择：I can ______ the violin. A. play B. playing", answer: "A. play" },
+        { type: "乐器 the", prompt: "填空：play ______ piano", answer: "the" },
+        { type: "问能力", prompt: "根据答句写问句：I can play the drum.", answer: "What can you play?" },
+        { type: "否定", prompt: "翻译：我不会弹钢琴。", answer: "I can't play the piano." },
+        { type: "物主代词", prompt: "填空：This is my drum. It is ______ drum.", answer: "my" },
+        { type: "位置介词", prompt: "翻译：在钢琴旁边。", answer: "beside the piano" },
+        { type: "sound", prompt: "翻译：这是什么声音？", answer: "What's the sound?" },
+        { type: "can 后原形", prompt: "改错：She can plays the violin.", answer: "She can play the violin." },
+        { type: "乐器", prompt: "选择：play ______ football. A. the B. /", answer: "B. /" },
+        { type: "综合", prompt: "翻译：我喜欢音乐课。", answer: "I like Music class." }
+      ],
+      11: [
+        { type: "节日 the", prompt: "选择：I like ______ Spring Festival. A. the B. a", answer: "A. the" },
+        { type: "during", prompt: "填空：______ the Spring Festival, I visit my relatives.", answer: "During" },
+        { type: "usually", prompt: "填空：I ______ have a big dinner.", answer: "usually" },
+        { type: "like eating", prompt: "选择：I like ______ mooncakes. A. eat B. eating", answer: "B. eating" },
+        { type: "问喜好", prompt: "根据答句写问句：I like the Dragon Boat Festival.", answer: "What festival do you like?" },
+        { type: "on + day", prompt: "填空：______ New Year's Eve", answer: "on" },
+        { type: "do 问句", prompt: "填空：What ______ you usually do during the festival?", answer: "do" },
+        { type: "food", prompt: "翻译：我喜欢吃粽子。", answer: "I like eating rice dumplings." },
+        { type: "activity", prompt: "翻译：我通常拜访我的祖父母。", answer: "I usually visit my grandparents." },
+        { type: "综合", prompt: "翻译：春节是一个重要的节日。", answer: "The Spring Festival is an important festival." }
+      ],
+      12: [
+        { type: "there be", prompt: "选择：There ______ four eggs in the nest. A. is B. are", answer: "B. are" },
+        { type: "there be", prompt: "填空：There ______ a pond behind the tree.", answer: "is" },
+        { type: "序数词", prompt: "写出 four 的序数词。", answer: "fourth" },
+        { type: "进行时", prompt: "填空：Mother Duck is ______ a nest. (make)", answer: "making" },
+        { type: "形容词", prompt: "选择：The duckling is ______. A. ugly B. uglyly", answer: "A. ugly" },
+        { type: "复数", prompt: "写出 baby 的复数。", answer: "babies" },
+        { type: "故事地点", prompt: "翻译：在窝里。", answer: "in the nest" },
+        { type: "look into", prompt: "翻译：看进池塘里。", answer: "look into the pond" },
+        { type: "drive away", prompt: "翻译：把它赶走。", answer: "drive it away" },
+        { type: "综合", prompt: "翻译：他是一只美丽的天鹅。", answer: "He is a beautiful swan." }
+      ]
+    };
+
+    function initProgressiveApp() {
+      const storageKey = "english4bProgressiveProgressV2";
+      const profileKey = "english4bProgressiveProfileV2";
+      const flatUnits = weeks.flatMap(function (week) {
+        return week.units.map(function (unit) {
+          const enhanced = enhancedUnit(unit);
+          return Object.assign({}, enhanced, {
+            weekId: week.id,
+            weekTitle: week.title,
+            dictationWords: enhanced.vocab.map(function (word) {
+              return [word, getProgressiveMeaning(word)];
+            }),
+            grammarDrills: progressiveGrammarDrills[unit.id] || []
+          });
+        });
+      });
+      const progressWeights = { vocab: 20, grammar: 30, dictation: 25, test: 25 };
+      let currentView = "dashboard";
+      let currentUnitId = Number(localStorage.getItem("english4bLastUnitId") || 1);
+      let dictationState = { unitId: 0, index: 0, phase: "ready" };
+
+      function readProfile() {
+        try {
+          return JSON.parse(localStorage.getItem(profileKey) || "null");
+        } catch (error) {
+          return null;
+        }
+      }
+
+      function normalizeProfileName(name) {
+        return String(name || "Joyee")
+          .trim()
+          .replace(/\s+/g, " ")
+          .toLowerCase() || "joyee";
+      }
+
+      function readProgressStore() {
+        try {
+          return JSON.parse(localStorage.getItem(storageKey) || "{}");
+        } catch (error) {
+          return {};
+        }
+      }
+
+      function saveProgressStore(store) {
+        localStorage.setItem(storageKey, JSON.stringify(store));
+      }
+
+      function getActiveProfileKey() {
+        const profile = readProfile();
+        return profile && profile.key ? profile.key : "";
+      }
+
+      function saveProfile(profile) {
+        const cleanName = String(profile.name || "Joyee").trim() || "Joyee";
+        const key = normalizeProfileName(cleanName);
+        const nextProfile = {
+          key: key,
+          name: cleanName,
+          loggedInAt: Date.now()
+        };
+        const store = readProgressStore();
+        store[key] = Object.assign({ profileName: cleanName, units: {} }, store[key] || {}, {
+          profileName: cleanName,
+          lastLoginAt: Date.now()
+        });
+        saveProgressStore(store);
+        localStorage.setItem(profileKey, JSON.stringify(nextProfile));
+      }
+
+      function readProgress() {
+        const key = getActiveProfileKey();
+        const store = readProgressStore();
+        return key && store[key] && store[key].units ? store[key].units : {};
+      }
+
+      function saveProgress(progress) {
+        const profile = readProfile();
+        if (!profile || !profile.key) {
+          return;
+        }
+
+        const store = readProgressStore();
+        store[profile.key] = Object.assign({ profileName: profile.name, units: {} }, store[profile.key] || {}, {
+          profileName: profile.name,
+          updatedAt: Date.now(),
+          units: progress
+        });
+        saveProgressStore(store);
+      }
+
+      function getUnitProgress(unitId) {
+        const progress = readProgress();
+        return progress[unitId] || { vocab: false, grammar: false, dictation: false, test: false, dictationDone: 0 };
+      }
+
+      function setUnitProgress(unitId, patch) {
+        const progress = readProgress();
+        progress[unitId] = Object.assign({ vocab: false, grammar: false, dictation: false, test: false, dictationDone: 0 }, progress[unitId] || {}, patch);
+        saveProgress(progress);
+      }
+
+      function percentFor(unitId) {
+        const unitProgress = getUnitProgress(unitId);
+        return Object.keys(progressWeights).reduce(function (sum, key) {
+          return sum + (unitProgress[key] ? progressWeights[key] : 0);
+        }, 0);
+      }
+
+      function overallPercent() {
+        const total = flatUnits.reduce(function (sum, unit) {
+          return sum + percentFor(unit.id);
+        }, 0);
+        return Math.round(total / flatUnits.length);
+      }
+
+      function escapeText(value) {
+        return String(value || "")
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      }
+
+      function speakWord(word) {
+        if (!("speechSynthesis" in window) || !word) {
+          return;
+        }
+
+        const utterance = new SpeechSynthesisUtterance(word);
+        utterance.lang = "en-US";
+        utterance.rate = 0.82;
+        utterance.pitch = 1.05;
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(utterance);
+      }
+
+      function icon(name) {
+        const paths = {
+          home: '<path d="m3 11 9-8 9 8"></path><path d="M5 10v10h14V10"></path>',
+          book: '<path d="M4 6.5A2.5 2.5 0 0 1 6.5 4H20v15H6.5A2.5 2.5 0 0 1 4 16.5z"></path><path d="M8 8h8M8 12h7M8 16h5"></path>',
+          user: '<path d="M20 21a8 8 0 0 0-16 0"></path><circle cx="12" cy="7" r="4"></circle>',
+          play: '<path d="M8 5v14l11-7z"></path>',
+          check: '<path d="m5 12 4 4L19 6"></path>',
+          test: '<path d="M9 11h6M9 15h6"></path><path d="M7 3h10l3 3v15H4V3z"></path>'
+        };
+        return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">' + (paths[name] || paths.book) + '</svg>';
+      }
+
+      function progressBar(value) {
+        return '<div class="p-progress"><span style="width:' + value + '%"></span></div>';
+      }
+
+      function stageBadge(label, done) {
+        return '<span class="stage-badge ' + (done ? "done" : "") + '">' + (done ? "✓ " : "") + label + '</span>';
+      }
+
+      function renderShell(content) {
+        const profile = readProfile();
+        document.body.innerHTML = [
+          '<div class="p-app">',
+          '  <header class="p-header">',
+          '    <button class="p-brand" type="button" data-action="dashboard">' + icon("book") + '<span>英语 4B 渐进复习</span></button>',
+          '    <div class="p-header-actions">',
+          profile ? '<span class="p-user">' + icon("user") + escapeText(profile.name) + '</span>' : '',
+          profile ? '<button class="p-ghost" type="button" data-action="reset-progress">重置进度</button>' : '',
+          profile ? '<button class="p-ghost" type="button" data-action="logout">退出</button>' : '',
+          '    </div>',
+          '  </header>',
+          content,
+          '</div>'
+        ].join("");
+      }
+
+      function renderLogin() {
+        document.body.innerHTML = [
+          '<div class="p-login">',
+          '  <section class="p-login-card">',
+          '    <div class="p-login-mark">' + icon("book") + '</div>',
+          '    <p class="eyebrow">Oxford Shanghai 4B</p>',
+          '    <h1>开始渐进式复习</h1>',
+          '    <p>输入孩子的名字后进入 12 个 Unit 的总进度看板。本页会自动记录每个单元的完成情况。</p>',
+          '    <form data-login-form class="p-login-form">',
+          '      <label>名字<input id="studentNameInput" type="text" maxlength="20" placeholder="例如：Joyee" required></label>',
+          '      <button class="p-primary" type="submit">' + icon("play") + '进入复习</button>',
+          '    </form>',
+          '  </section>',
+          '</div>'
+        ].join("");
+      }
+
+      function renderDashboard() {
+        currentView = "dashboard";
+        const profile = readProfile();
+        const overall = overallPercent();
+        const completed = flatUnits.filter(function (unit) { return percentFor(unit.id) === 100; }).length;
+        renderShell([
+          '<main class="p-main">',
+          '  <section class="p-hero-panel">',
+          '    <div>',
+          '      <p class="eyebrow">登录后的总看板</p>',
+          '      <h1>' + escapeText(profile.name) + ' 的 4B 复习进度</h1>',
+          '      <p>先看 12 个 Unit 的总进度，再点击进入单元内的“单词 → 语法 → 听写 → 测试”渐进复习。</p>',
+          '    </div>',
+          '    <div class="p-overall"><strong>' + overall + '%</strong><span>总体完成</span>' + progressBar(overall) + '<small>已完成 ' + completed + ' / 12 个 Unit</small></div>',
+          '  </section>',
+          '  <section class="p-unit-grid">',
+          flatUnits.map(function (unit) {
+            const value = percentFor(unit.id);
+            const unitProgress = getUnitProgress(unit.id);
+            return [
+              '<button class="p-unit-card" type="button" data-action="open-unit" data-unit="' + unit.id + '">',
+              '  <span class="p-unit-kicker">' + unit.weekTitle.replace("第 ", "第") + '</span>',
+              '  <h2>Unit ' + unit.id + '</h2>',
+              '  <strong>' + unit.title + '</strong>',
+              progressBar(value),
+              '  <div class="p-card-bottom"><span>' + value + '%</span><span>' + (value === 100 ? "已完成" : "继续复习") + '</span></div>',
+              '  <div class="stage-row">' + stageBadge("单词", unitProgress.vocab) + stageBadge("语法", unitProgress.grammar) + stageBadge("听写", unitProgress.dictation) + stageBadge("测试", unitProgress.test) + '</div>',
+              '</button>'
+            ].join("");
+          }).join(""),
+          '  </section>',
+          '</main>'
+        ].join(""));
+      }
+
+      function questionList(questions, prefix) {
+        return questions.map(function (question, index) {
+          return [
+            '<article class="p-question">',
+            '  <div><span>' + question.type + '</span><p>' + (index + 1) + '. ' + escapeText(question.prompt) + '</p></div>',
+            '  <button type="button" class="p-mini" data-action="toggle-answer">看答案</button>',
+            '  <div class="p-answer"><strong>答案：</strong>' + escapeText(question.answer) + '</div>',
+            '</article>'
+          ].join("");
+        }).join("");
+      }
+
+      function renderUnit(unitId) {
+        currentView = "unit";
+        currentUnitId = Number(unitId);
+        localStorage.setItem("english4bLastUnitId", String(currentUnitId));
+        const unit = flatUnits.find(function (item) { return item.id === currentUnitId; });
+        const unitProgress = getUnitProgress(unit.id);
+        const value = percentFor(unit.id);
+        const dictationWords = unit.dictationWords;
+        const dictationDone = Math.min(Number(unitProgress.dictationDone || 0), dictationWords.length);
+        const dictationPercent = dictationWords.length ? Math.round((dictationDone / dictationWords.length) * 100) : 0;
+
+        renderShell([
+          '<main class="p-main p-study">',
+          '  <nav class="p-breadcrumb"><button class="p-ghost" type="button" data-action="dashboard">' + icon("home") + '返回总进度</button><span>Unit ' + unit.id + '</span><strong>' + unit.title + '</strong></nav>',
+          '  <section class="p-unit-hero">',
+          '    <div><p class="eyebrow">Unit ' + unit.id + '</p><h1>' + unit.title + '</h1><p>' + unit.focus + '</p><div class="stage-row">' + stageBadge("单词", unitProgress.vocab) + stageBadge("语法", unitProgress.grammar) + stageBadge("听写", unitProgress.dictation) + stageBadge("测试", unitProgress.test) + '</div></div>',
+          '    <div class="p-overall"><strong>' + value + '%</strong><span>本单元完成</span>' + progressBar(value) + '</div>',
+          '  </section>',
+          '  <section class="p-step" id="vocab-step">',
+          '    <div class="p-step-head"><span>01</span><div><h2>单词复习</h2><p>先认读本单元重点词，再进入听写。</p></div></div>',
+          '    <div class="p-word-table">' + dictationWords.map(function (word) { return '<div><strong>' + escapeText(word[0]) + '</strong><span>' + escapeText(word[1]) + '</span></div>'; }).join("") + '</div>',
+          '    <button class="p-primary" type="button" data-action="mark-stage" data-stage="vocab" data-unit="' + unit.id + '">' + icon("check") + (unitProgress.vocab ? "已完成单词复习" : "标记单词复习完成") + '</button>',
+          '  </section>',
+          '  <section class="p-step" id="grammar-step">',
+          '    <div class="p-step-head"><span>02</span><div><h2>语法整理</h2><p>每个语法点都对应该单元课文句型，下方有 10 道专项题。</p></div></div>',
+          '    <div class="p-grammar-grid"><div><h3>课本语法重点</h3><ul>' + list(unit.grammar) + '</ul></div><div><h3>中文资料校对重点</h3><ul>' + list(unit.verifiedGrammar) + '</ul></div></div>',
+          '    <h3>语法专项 10 题</h3>',
+          '    <div class="p-question-list">' + questionList(unit.grammarDrills, "grammar-" + unit.id) + '</div>',
+          '    <button class="p-primary" type="button" data-action="mark-stage" data-stage="grammar" data-unit="' + unit.id + '">' + icon("check") + (unitProgress.grammar ? "已完成语法复习" : "完成语法学习与专项题") + '</button>',
+          '  </section>',
+          '  <section class="p-action-grid">',
+          '    <article class="p-step">',
+          '      <div class="p-step-head"><span>03</span><div><h2>单词听写</h2><p>第一次点击播放发音，第二次点击显示单词和中文，继续点击进入下一个词。</p></div></div>',
+          '      <div class="p-dictation"><span>' + dictationDone + ' / ' + dictationWords.length + '</span>' + progressBar(dictationPercent) + '<h3 id="dictationPrompt">准备开始听写</h3><p id="dictationMeaning">点击下方按钮播放第一个单词。</p></div>',
+          '      <button class="p-primary" type="button" data-action="dictation" data-unit="' + unit.id + '">' + icon("play") + (unitProgress.dictation ? "重新听写" : "开始听写") + '</button>',
+          '      <button class="p-ghost" type="button" data-action="reset-dictation" data-unit="' + unit.id + '">重置本单元听写</button>',
+          '    </article>',
+          '    <article class="p-step">',
+          '      <div class="p-step-head"><span>04</span><div><h2>单元测试</h2><p>10 道自编综合题，覆盖词汇、语法、句型和表达。</p></div></div>',
+          '      <div class="p-question-list compact">' + questionList(unit.quiz, "test-" + unit.id) + '</div>',
+          '      <button class="p-primary" type="button" data-action="mark-stage" data-stage="test" data-unit="' + unit.id + '">' + icon("test") + (unitProgress.test ? "已完成单元测试" : "完成单元测试") + '</button>',
+          '    </article>',
+          '  </section>',
+          '</main>'
+        ].join(""));
+
+        dictationState = { unitId: unit.id, index: dictationDone >= dictationWords.length ? 0 : dictationDone, phase: "ready" };
+      }
+
+      function handleDictation(unitId) {
+        const unit = flatUnits.find(function (item) { return item.id === Number(unitId); });
+        const words = unit.dictationWords;
+        const prompt = document.getElementById("dictationPrompt");
+        const meaning = document.getElementById("dictationMeaning");
+        if (!words.length) {
+          return;
+        }
+
+        if (dictationState.unitId !== unit.id) {
+          dictationState = { unitId: unit.id, index: 0, phase: "ready" };
+        }
+
+        if (dictationState.index >= words.length) {
+          setUnitProgress(unit.id, { dictation: true, dictationDone: words.length });
+          renderUnit(unit.id);
+          return;
+        }
+
+        const current = words[dictationState.index];
+        if (dictationState.phase === "ready" || dictationState.phase === "revealed") {
+          speakWord(current[0]);
+          prompt.textContent = "已播放第 " + (dictationState.index + 1) + " 个单词，请先默写";
+          meaning.textContent = "再点一次显示答案和中文意思。";
+          dictationState.phase = "heard";
+          return;
+        }
+
+        if (dictationState.phase === "heard") {
+          prompt.textContent = current[0];
+          meaning.textContent = current[1];
+          const done = dictationState.index + 1;
+          setUnitProgress(unit.id, { dictationDone: done, dictation: done >= words.length });
+          dictationState.index += 1;
+          dictationState.phase = "revealed";
+
+          if (done >= words.length) {
+            meaning.textContent = current[1] + "。本单元听写已完成，进度已记录。";
+          }
+        }
+      }
+
+      function injectProgressiveStyles() {
+        const style = document.createElement("style");
+        style.textContent = `
+          body { background: #f7f4ea; color: #24302f; }
+          .p-app { min-height: 100vh; }
+          .p-header { position: sticky; top: 0; z-index: 20; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 14px 24px; background: rgba(255,253,247,.95); border-bottom: 1px solid #d8ded8; backdrop-filter: blur(14px); }
+          .p-brand, .p-user, .p-primary, .p-ghost, .p-mini { display: inline-flex; align-items: center; gap: 8px; border-radius: 8px; min-height: 40px; border: 1px solid #d8ded8; background: #fff; color: #24302f; padding: 0 13px; text-decoration: none; }
+          .p-brand { border: 0; background: transparent; font-weight: 800; font-size: 17px; }
+          .p-brand svg, .p-user svg, .p-primary svg, .p-ghost svg { width: 18px; height: 18px; stroke-width: 2; }
+          .p-primary { background: #177e89; color: #fff; border-color: #177e89; font-weight: 800; }
+          .p-ghost { background: #fffdf7; }
+          .p-mini { min-height: 32px; font-size: 13px; }
+          .p-header-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+          .p-main { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 22px 0 56px; }
+          .p-login { min-height: 100vh; display: grid; place-items: center; padding: 22px; background: linear-gradient(135deg, #f5f0e6, #e9f4f1); }
+          .p-login-card { width: min(520px, 100%); border: 1px solid #d8ded8; border-radius: 8px; background: #fffdf7; padding: 28px; box-shadow: 0 18px 48px rgba(31,45,42,.12); }
+          .p-login-mark { display: grid; place-items: center; width: 62px; height: 62px; border-radius: 8px; background: #177e89; color: #fff; margin-bottom: 16px; }
+          .p-login-mark svg { width: 34px; height: 34px; }
+          .p-login-card h1, .p-hero-panel h1, .p-unit-hero h1 { margin: 0 0 10px; font-size: clamp(30px, 4vw, 46px); line-height: 1.08; letter-spacing: 0; }
+          .p-login-card p, .p-hero-panel p, .p-unit-hero p, .p-step p { color: #657371; line-height: 1.7; }
+          .p-login-form { display: grid; gap: 14px; margin-top: 18px; }
+          .p-login-form label { display: grid; gap: 8px; font-weight: 700; }
+          .p-login-form input { height: 44px; border: 1px solid #d8ded8; border-radius: 8px; padding: 0 12px; }
+          .p-hero-panel, .p-unit-hero, .p-step { border: 1px solid #d8ded8; border-radius: 8px; background: rgba(255,255,255,.9); padding: 18px; box-shadow: 0 12px 32px rgba(31,45,42,.08); }
+          .p-hero-panel, .p-unit-hero { display: grid; grid-template-columns: minmax(0,1fr) 250px; gap: 18px; align-items: center; margin-bottom: 18px; }
+          .p-overall { border: 1px solid #d8ded8; border-radius: 8px; background: #fffdf7; padding: 16px; }
+          .p-overall strong { display: block; font-size: 42px; line-height: 1; color: #177e89; }
+          .p-overall span, .p-overall small { color: #657371; }
+          .p-progress { height: 10px; border-radius: 999px; background: #f5f0e6; overflow: hidden; margin: 10px 0; }
+          .p-progress span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #177e89, #5e8c61); }
+          .p-unit-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; }
+          .p-unit-card { text-align: left; border: 1px solid #d8ded8; border-radius: 8px; background: #fff; padding: 16px; min-height: 220px; box-shadow: 0 10px 26px rgba(31,45,42,.08); }
+          .p-unit-card h2 { margin: 8px 0 4px; font-size: 28px; }
+          .p-unit-card strong { display: block; min-height: 46px; line-height: 1.35; }
+          .p-unit-kicker { color: #d45d4c; font-size: 13px; font-weight: 800; }
+          .p-card-bottom { display: flex; justify-content: space-between; color: #657371; font-weight: 700; }
+          .stage-row { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 12px; }
+          .stage-badge { display: inline-flex; align-items: center; min-height: 26px; border-radius: 999px; padding: 0 9px; background: #f5f0e6; color: #657371; font-size: 12px; font-weight: 800; }
+          .stage-badge.done { background: #e4f0dd; color: #5e8c61; }
+          .p-breadcrumb { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 14px; color: #657371; }
+          .p-study { display: grid; gap: 16px; }
+          .p-step-head { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; }
+          .p-step-head > span { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 8px; background: #ffe2d9; color: #d45d4c; font-weight: 900; flex: 0 0 auto; }
+          .p-step h2, .p-step h3 { margin: 0 0 8px; letter-spacing: 0; }
+          .p-word-table { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 8px; margin: 12px 0; }
+          .p-word-table div, .p-details, .p-question, .p-dictation, .p-grammar-grid > div { border: 1px solid #d8ded8; border-radius: 8px; background: #fffdf7; padding: 10px; }
+          .p-word-table strong, .p-word-table span { display: block; overflow-wrap: anywhere; }
+          .p-word-table span { color: #657371; margin-top: 4px; }
+          .p-details { margin-bottom: 12px; }
+          .p-grammar-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; margin-bottom: 14px; }
+          .p-grammar-grid ul { margin: 0; padding-left: 18px; line-height: 1.7; }
+          .p-question-list { display: grid; gap: 8px; margin: 10px 0 14px; }
+          .p-question { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 10px; align-items: start; }
+          .p-question span { display: inline-flex; width: fit-content; border-radius: 999px; padding: 3px 8px; background: #d9f0ef; color: #177e89; font-size: 12px; font-weight: 800; margin-bottom: 6px; }
+          .p-question p { margin: 0; color: #24302f; }
+          .p-answer { display: none; grid-column: 1 / -1; border-radius: 8px; background: #e4f0dd; padding: 9px; line-height: 1.6; }
+          .p-answer.open { display: block; }
+          .p-action-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 16px; }
+          .p-dictation h3 { margin: 10px 0 4px; font-size: 26px; }
+          .p-dictation span { color: #177e89; font-weight: 900; }
+          .compact { max-height: 620px; overflow: auto; padding-right: 4px; }
+          @media (pointer: coarse) { .p-brand, .p-primary, .p-ghost, .p-mini, .p-unit-card, .p-login-form input { min-height: 46px; } .p-unit-card { padding: 18px; } }
+          @media (min-width: 981px) and (max-width: 1180px) { .p-main { width: min(100% - 28px, 1080px); padding-top: 18px; } .p-header { padding: 14px 18px; } .p-hero-panel, .p-unit-hero { grid-template-columns: minmax(0,1fr) 220px; } .p-unit-grid { grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; } .p-unit-card { min-height: 236px; } .p-word-table { grid-template-columns: repeat(4, minmax(0,1fr)); } .p-question { grid-template-columns: minmax(0,1fr) 96px; } .p-login-card { width: min(620px, 100%); } }
+          @media (min-width: 768px) and (max-width: 980px) { .p-main { width: min(100% - 24px, 900px); } .p-header { padding: 12px 16px; } .p-hero-panel, .p-unit-hero, .p-action-grid, .p-grammar-grid { grid-template-columns: 1fr; } .p-unit-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } .p-word-table { grid-template-columns: repeat(2, minmax(0,1fr)); } .p-unit-card { min-height: 210px; } .p-overall strong { font-size: 38px; } .compact { max-height: none; overflow: visible; } }
+          @media (max-width: 980px) { .p-hero-panel, .p-unit-hero, .p-action-grid, .p-grammar-grid { grid-template-columns: 1fr; } .p-unit-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } .p-word-table { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+          @media (max-width: 620px) { .p-header { padding: 12px; align-items: flex-start; } .p-main { width: min(100% - 20px, 1180px); } .p-unit-grid, .p-word-table { grid-template-columns: 1fr; } .p-question { grid-template-columns: 1fr; } .p-login-card { padding: 20px; } }
+          @media print { .p-header, .p-breadcrumb, .p-primary, .p-ghost, .p-mini { display: none !important; } .p-main { width: 100%; padding: 0; } .p-unit-grid, .p-action-grid, .p-grammar-grid, .p-word-table { grid-template-columns: 1fr; } .p-step, .p-unit-hero, .p-hero-panel, .p-unit-card { box-shadow: none; break-inside: avoid; } .p-answer { display: block; } }
+        `;
+        document.head.appendChild(style);
+      }
+
+      injectProgressiveStyles();
+
+      document.addEventListener("submit", function (event) {
+        const form = event.target.closest("[data-login-form]");
+        if (!form) {
+          return;
+        }
+
+        event.preventDefault();
+        const input = document.getElementById("studentNameInput");
+        const name = input.value.trim() || "Joyee";
+        saveProfile({ name: name, loggedInAt: Date.now() });
+        renderDashboard();
+      });
+
+      document.addEventListener("click", function (event) {
+        const actionTarget = event.target.closest("[data-action]");
+        if (!actionTarget) {
+          return;
+        }
+
+        const action = actionTarget.dataset.action;
+        if (action === "dashboard") {
+          renderDashboard();
+        }
+        if (action === "logout") {
+          localStorage.removeItem(profileKey);
+          renderLogin();
+        }
+        if (action === "reset-progress") {
+          const profile = readProfile();
+          const store = readProgressStore();
+          if (profile && profile.key && store[profile.key]) {
+            store[profile.key] = Object.assign({}, store[profile.key], {
+              units: {},
+              updatedAt: Date.now()
+            });
+            saveProgressStore(store);
+          }
+          dictationState = { unitId: 0, index: 0, phase: "ready" };
+          if (currentView === "unit") {
+            renderUnit(currentUnitId);
+          } else {
+            renderDashboard();
+          }
+        }
+        if (action === "open-unit") {
+          renderUnit(actionTarget.dataset.unit);
+        }
+        if (action === "mark-stage") {
+          setUnitProgress(actionTarget.dataset.unit, { [actionTarget.dataset.stage]: true });
+          renderUnit(actionTarget.dataset.unit);
+        }
+        if (action === "toggle-answer") {
+          const question = actionTarget.closest(".p-question");
+          const answer = question.querySelector(".p-answer");
+          const open = answer.classList.toggle("open");
+          actionTarget.textContent = open ? "收起答案" : "看答案";
+        }
+        if (action === "dictation") {
+          handleDictation(actionTarget.dataset.unit);
+        }
+        if (action === "reset-dictation") {
+          setUnitProgress(actionTarget.dataset.unit, { dictation: false, dictationDone: 0 });
+          renderUnit(actionTarget.dataset.unit);
+        }
+      });
+
+      if (readProfile()) {
+        renderDashboard();
+      } else {
+        renderLogin();
+      }
+    }
+
+    render();
+    initProgressiveApp();
+  </script>
+</body>
+</html>

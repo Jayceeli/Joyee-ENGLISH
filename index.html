@@ -122,6 +122,7 @@
     }
 
     .icon-button,
+    .nav-button,
     .primary-button {
       display: inline-flex;
       align-items: center;
@@ -134,6 +135,7 @@
       color: var(--ink);
       padding: 0 14px;
       box-shadow: 0 8px 20px rgba(31, 45, 42, 0.08);
+      text-decoration: none;
     }
 
     .primary-button {
@@ -144,6 +146,7 @@
     }
 
     .icon-button svg,
+    .nav-button svg,
     .primary-button svg {
       width: 18px;
       height: 18px;
@@ -857,6 +860,14 @@
       </div>
 
       <div class="top-actions">
+        <a class="nav-button" href="yuwen4x.html" title="打开四年级下册语文复习页面">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"></path>
+            <path d="M8 7h8M8 11h6"></path>
+          </svg>
+          语文复习
+        </a>
         <button class="icon-button" type="button" id="resetProgress" title="清空本页完成记录">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
             <path d="M3 12a9 9 0 1 0 3-6.7"></path>
@@ -4921,6 +4932,7 @@
           '  <header class="p-header">',
           '    <button class="p-brand" type="button" data-action="dashboard">' + icon("book") + '<span>英语 4B 渐进复习</span></button>',
           '    <div class="p-header-actions">',
+          '<a class="p-ghost" href="yuwen4x.html">' + icon("book") + '语文复习</a>',
           profile ? '<span class="p-user">' + icon("user") + escapeText(profile.name) + '</span>' : '',
           profile ? '<button class="p-ghost" type="button" data-action="reset-progress">重置进度</button>' : '',
           profile ? '<button class="p-ghost" type="button" data-action="logout">退出</button>' : '',
@@ -4943,6 +4955,7 @@
           '      <label>名字<input id="studentNameInput" type="text" maxlength="20" placeholder="例如：Joyee" required></label>',
           '      <button class="p-primary" type="submit">' + icon("play") + '进入复习</button>',
           '    </form>',
+          '    <a class="p-ghost" href="yuwen4x.html">' + icon("book") + '先看语文复习</a>',
           '  </section>',
           '</div>'
         ].join("");

@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>四年级下册语文复习页面</title>
+  <style>
+    :root {
+      --ink: #24302f;
+      --muted: #66736f;
+      --paper: #fffdf7;
+      --wash: #f5f0e6;
+      --line: #d8ded8;
+      --teal: #177e89;
+      --teal-soft: #d9f0ef;
+      --coral: #d45d4c;
+      --coral-soft: #ffe2d9;
+      --green: #5e8c61;
+      --green-soft: #e4f0dd;
+      --gold: #c78922;
+      --gold-soft: #fff0c9;
+      --white: #ffffff;
+      --shadow: 0 18px 48px rgba(31, 45, 42, 0.12);
+      font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(212, 93, 76, 0.14), transparent 25rem),
+        radial-gradient(circle at 90% 20%, rgba(23, 126, 137, 0.13), transparent 28rem),
+        linear-gradient(180deg, #fbf7ed 0%, #eef4ef 54%, #fffdf7 100%);
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 24px 0 56px;
+    }
+
+    .topbar {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .brand {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 58px;
+      height: 58px;
+      border-radius: 8px;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--coral), var(--teal));
+      box-shadow: var(--shadow);
+      flex: 0 0 auto;
+    }
+
+    .brand-mark svg,
+    .button svg {
+      width: 24px;
+      height: 24px;
+      stroke-width: 2;
+    }
+
+    .eyebrow {
+      margin: 0 0 4px;
+      color: var(--coral);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin-bottom: 6px;
+      font-size: clamp(30px, 4.2vw, 48px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+      font-size: 25px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin-bottom: 8px;
+      font-size: 18px;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      color: var(--ink);
+      padding: 0 14px;
+      box-shadow: 0 8px 20px rgba(31, 45, 42, 0.08);
+      text-decoration: none;
+    }
+
+    .button.primary {
+      border-color: transparent;
+      background: var(--teal);
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    .hero {
+      overflow: hidden;
+      border: 1px solid rgba(216, 222, 216, 0.8);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.84);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 360px;
+      gap: 28px;
+      align-items: center;
+      padding: 26px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .stat {
+      min-height: 88px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      padding: 14px;
+    }
+
+    .stat span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .stat strong {
+      font-size: 25px;
+      line-height: 1;
+    }
+
+    .study-map {
+      min-height: 230px;
+      margin: 0;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #f7fbf9, #fff6e6);
+      border: 1px solid var(--line);
+      padding: 18px;
+    }
+
+    .study-map svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .controls {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: grid;
+      grid-template-columns: minmax(260px, 1fr) auto;
+      gap: 14px;
+      align-items: center;
+      margin: 18px 0;
+      padding: 12px;
+      border: 1px solid rgba(216, 222, 216, 0.9);
+      border-radius: 8px;
+      background: rgba(255, 253, 247, 0.94);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 10px 28px rgba(31, 45, 42, 0.08);
+    }
+
+    .search {
+      position: relative;
+    }
+
+    .search svg {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      width: 18px;
+      height: 18px;
+      color: var(--muted);
+      transform: translateY(-50%);
+    }
+
+    .search input {
+      width: 100%;
+      min-height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 0 14px 0 40px;
+      background: var(--white);
+      color: var(--ink);
+      outline: none;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .tab {
+      min-height: 40px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      color: var(--ink);
+      padding: 0 12px;
+    }
+
+    .tab.is-active {
+      border-color: var(--teal);
+      background: var(--teal-soft);
+      color: #105b63;
+      font-weight: 700;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .side {
+      position: sticky;
+      top: 86px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .panel,
+    .card,
+    .source-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.88);
+      box-shadow: 0 12px 30px rgba(31, 45, 42, 0.08);
+    }
+
+    .panel {
+      padding: 16px;
+    }
+
+    .panel h2 {
+      font-size: 18px;
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .mini-list a {
+      display: block;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      padding: 9px 10px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .mini-list a:hover {
+      border-color: var(--line);
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    .content {
+      display: grid;
+      gap: 18px;
+    }
+
+    .card,
+    .source-card {
+      padding: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .unit-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .unit-card {
+      display: grid;
+      gap: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      padding: 16px;
+    }
+
+    .unit-head {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .unit-number {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      background: var(--coral-soft);
+      color: #9d3729;
+      font-weight: 800;
+      flex: 0 0 auto;
+    }
+
+    .tag-row,
+    .chips {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tag,
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .tag {
+      background: var(--teal-soft);
+      color: #105b63;
+      font-weight: 700;
+    }
+
+    .chip {
+      border: 1px solid var(--line);
+      background: var(--paper);
+      color: var(--muted);
+    }
+
+    .section-block {
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+    }
+
+    .section-block h4 {
+      margin: 0 0 8px;
+      font-size: 15px;
+    }
+
+    .bullets {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .task {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      padding: 14px;
+      line-height: 1.7;
+    }
+
+    .task strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--ink);
+    }
+
+    .checklist {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .check-item {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 10px;
+      align-items: start;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      padding: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .check-item input {
+      width: 18px;
+      height: 18px;
+      margin-top: 3px;
+      accent-color: var(--teal);
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 12px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: var(--wash);
+      border: 1px solid var(--line);
+    }
+
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--coral), var(--teal));
+      transition: width 0.2s ease;
+    }
+
+    .source-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .source-link {
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      padding: 14px;
+      text-decoration: none;
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    .source-link span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .empty-state {
+      display: none;
+      border: 1px dashed var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.76);
+      padding: 18px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 980px) {
+      .topbar,
+      .hero-inner,
+      .controls,
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .actions,
+      .tabs {
+        justify-content: flex-start;
+      }
+
+      .side {
+        position: static;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        width: min(100% - 20px, 1180px);
+        padding-top: 16px;
+      }
+
+      .brand {
+        align-items: flex-start;
+      }
+
+      .brand-mark {
+        width: 48px;
+        height: 48px;
+      }
+
+      .hero-inner,
+      .card,
+      .source-card {
+        padding: 14px;
+      }
+
+      .stats,
+      .grid,
+      .unit-grid,
+      .source-grid,
+      .side {
+        grid-template-columns: 1fr;
+      }
+
+      .controls {
+        position: static;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+
+      .actions,
+      .controls,
+      .side {
+        display: none !important;
+      }
+
+      .page {
+        width: 100%;
+        padding: 0;
+      }
+
+      .hero,
+      .card,
+      .source-card,
+      .unit-card,
+      .task {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+
+      .grid,
+      .unit-grid,
+      .source-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"></path>
+            <path d="M8 7h8M8 11h6M8 15h7"></path>
+          </svg>
+        </div>
+        <div>
+          <p class="eyebrow">统编版 / 人教版 四年级下册</p>
+          <h1>语文复习页面</h1>
+          <p class="subtitle">把字词、课文、古诗文、阅读和习作放在同一张复习地图里。先抓基础，再按单元回顾，最后用阅读和作文收口。</p>
+        </div>
+      </div>
+
+      <div class="actions">
+        <a class="button" href="index.html" title="返回英语复习页面">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path d="m12 19-7-7 7-7"></path>
+            <path d="M19 12H5"></path>
+          </svg>
+          英语复习
+        </a>
+        <button class="button primary" type="button" id="printPage" title="打印或保存为 PDF">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path d="M6 9V2h12v7"></path>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <path d="M6 14h12v8H6z"></path>
+          </svg>
+          打印
+        </button>
+      </div>
+    </header>
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <div>
+          <p class="eyebrow">复习总纲</p>
+          <h2 id="hero-title">四条线一起走：字词要准，课文要熟，阅读会答，作文有素材。</h2>
+          <p class="subtitle">建议期末前 2-3 周使用：每天 35-45 分钟，基础 10 分钟，课文 12 分钟，阅读 10 分钟，习作素材或错题 8 分钟。不同年份课文顺序可能略有调整，以学校课本和老师范围为准。</p>
+          <div class="stats" aria-label="复习数据概览">
+            <article class="stat"><span>单元主题</span><strong>8 个</strong></article>
+            <article class="stat"><span>专项复习</span><strong>5 类</strong></article>
+            <article class="stat"><span>习作准备</span><strong>7 篇</strong></article>
+            <article class="stat"><span>建议周期</span><strong>2-3 周</strong></article>
+          </div>
+        </div>
+
+        <figure class="study-map" aria-label="语文复习路径图">
+          <svg viewBox="0 0 360 230" role="img" aria-labelledby="map-title">
+            <title id="map-title">语文复习路径</title>
+            <rect x="16" y="18" width="328" height="194" rx="8" fill="#fffdf7" stroke="#d8ded8"></rect>
+            <path d="M58 166 C96 80 136 76 178 126 S264 166 306 70" fill="none" stroke="#177e89" stroke-width="7" stroke-linecap="round"></path>
+            <g fill="#ffffff" stroke-width="5">
+              <circle cx="58" cy="166" r="24" stroke="#d45d4c"></circle>
+              <circle cx="138" cy="74" r="24" stroke="#c78922"></circle>
+              <circle cx="222" cy="142" r="24" stroke="#5e8c61"></circle>
+              <circle cx="306" cy="70" r="24" stroke="#177e89"></circle>
+            </g>
+            <g font-family="Microsoft YaHei, Arial" font-size="14" font-weight="700" fill="#24302f" text-anchor="middle">
+              <text x="58" y="171">字词</text>
+              <text x="138" y="79">课文</text>
+              <text x="222" y="147">阅读</text>
+              <text x="306" y="75">习作</text>
+            </g>
+            <g font-family="Microsoft YaHei, Arial" font-size="12" fill="#657371" text-anchor="middle">
+              <text x="58" y="204">听写订正</text>
+              <text x="138" y="42">中心方法</text>
+              <text x="222" y="188">答题模板</text>
+              <text x="306" y="38">素材提纲</text>
+            </g>
+          </svg>
+        </figure>
+      </div>
+    </section>
+
+    <section class="controls" aria-label="筛选和搜索">
+      <label class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle>
+          <path d="m20 20-3.5-3.5"></path>
+        </svg>
+        <input id="searchInput" type="search" placeholder="搜索单元、课文、习作或考点，例如：动物、说明方法、我的乐园">
+      </label>
+      <div class="tabs" role="tablist" aria-label="内容筛选">
+        <button class="tab is-active" type="button" data-filter="all">全部</button>
+        <button class="tab" type="button" data-filter="unit">单元</button>
+        <button class="tab" type="button" data-filter="skill">专项</button>
+        <button class="tab" type="button" data-filter="writing">习作</button>
+      </div>
+    </section>
+
+    <main class="layout">
+      <aside class="side" aria-label="页面导航">
+        <section class="panel">
+          <h2>快速导航</h2>
+          <ul class="mini-list">
+            <li><a href="#overview">复习总览</a></li>
+            <li><a href="#units">单元整理</a></li>
+            <li><a href="#skills">专项复习</a></li>
+            <li><a href="#writing">习作准备</a></li>
+            <li><a href="#plan">复习计划</a></li>
+            <li><a href="#sources">资料来源</a></li>
+          </ul>
+        </section>
+        <section class="panel">
+          <h2>考前进度</h2>
+          <div class="progress-bar" aria-hidden="true">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <p class="subtitle" id="progressText">还没有勾选检查项。</p>
+        </section>
+      </aside>
+
+      <div class="content">
+        <section class="card" id="overview" data-kind="skill" data-search="全册 复习 总览 字词 课文 古诗文 阅读 习作">
+          <p class="eyebrow">全册重点</p>
+          <h2>先把考试会反复出现的能力抓住</h2>
+          <div class="grid">
+            <div class="task"><strong>字词</strong>会认、会写生字；多音字；形近字；近反义词；四字词语；重点词语解释。</div>
+            <div class="task"><strong>句子</strong>扩句、缩句、改反问句和陈述句、修改病句、仿写句子、标点符号。</div>
+            <div class="task"><strong>课文</strong>把握主要内容，能说出人物品质、作者情感、说明方法和写作顺序。</div>
+            <div class="task"><strong>阅读</strong>概括段意，找中心句，理解词句含义，分析描写方法和说明方法。</div>
+          </div>
+        </section>
+
+        <section class="card" id="units" data-kind="unit" data-search="单元 课文 乡村 自然 科学 现代诗 动物 游览 成长 品格 童话">
+          <p class="eyebrow">按单元整理</p>
+          <h2>8 个单元的复习抓手</h2>
+          <div class="unit-grid" id="unitGrid"></div>
+        </section>
+
+        <section class="card" id="skills" data-kind="skill" data-search="字词 多音字 词语 修辞 病句 标点 阅读 说明文 人物品质">
+          <p class="eyebrow">专项复习</p>
+          <h2>基础题和阅读题的常用方法</h2>
+          <div class="grid">
+            <div class="task">
+              <strong>字词专项</strong>
+              每天听写 20-30 个词。错字不要只改一遍，要组词区分形近字，例如“藉、籍”，“侍、待”，“膨、澎”。
+            </div>
+            <div class="task">
+              <strong>多音字</strong>
+              放进词语辨读：屏息/屏风，折断/折腾/折本，看见/看守，率领/效率，凶恶/厌恶/恶心。
+            </div>
+            <div class="task">
+              <strong>句子专项</strong>
+              重点练修辞判断、修改病句、标点用法和仿写。病句常见问题：成分残缺、搭配不当、前后矛盾、语序不当、重复啰嗦。
+            </div>
+            <div class="task">
+              <strong>阅读答题</strong>
+              先找原文依据，再组织完整句。人物品质题可用：从“____”这个动作/语言/神态可以看出人物____的品质。
+            </div>
+            <div class="task">
+              <strong>说明文阅读</strong>
+              先找说明对象，再看特点、用途、形成过程或发展过程。说明方法题可答：运用了____，具体/准确/生动地说明了____。
+            </div>
+            <div class="task">
+              <strong>古诗文</strong>
+              要会背、会默写、会解释关键词句，还要能说出诗文表达的情感或故事启示。
+            </div>
+          </div>
+        </section>
+
+        <section class="card" id="writing" data-kind="writing" data-search="作文 习作 我的乐园 奇思妙想 动物朋友 游 我学会了 自画像 故事新编">
+          <p class="eyebrow">习作准备</p>
+          <h2>7 类作文先准备提纲</h2>
+          <div class="grid" id="writingGrid"></div>
+        </section>
+
+        <section class="card" id="plan" data-kind="skill" data-search="复习计划 考前 检查 清单 听写 阅读 作文">
+          <p class="eyebrow">期末节奏</p>
+          <h2>2-3 周复习安排</h2>
+          <div class="grid">
+            <div class="task"><strong>第 1 阶段：基础巩固，3-4 天</strong>每天听写词语，复习多音字、形近字、近反义词，背诵古诗文和日积月累。</div>
+            <div class="task"><strong>第 2 阶段：课文回顾，4-5 天</strong>每天复习 1-2 个单元，说出每课主要内容、中心和写作方法。</div>
+            <div class="task"><strong>第 3 阶段：阅读训练，3-4 天</strong>每天做 1 篇课内阅读和 1 篇课外阅读，重点练概括、词句理解、人物分析、说明方法。</div>
+            <div class="task"><strong>第 4 阶段：习作训练，3 天</strong>准备 6-8 个常考作文素材，每类作文至少列 1 个提纲。</div>
+          </div>
+          <div class="checklist" id="checklist"></div>
+        </section>
+
+        <section class="source-card" id="sources">
+          <p class="eyebrow">资料来源</p>
+          <h2>网络资料参考</h2>
+          <p class="subtitle">这些链接用于核对教材目录、课文范围和复习方向。页面内容已整理成复习提纲，没有直接搬运整篇课文或第三方题库。</p>
+          <div class="source-grid">
+            <a class="source-link" href="https://www.dzkbw.com/books/rjb/yuwen/xs4x_2019/">电子课本网：统编版四年级下册语文<span>核对目录和教材页。</span></a>
+            <a class="source-link" href="https://keben.app/book/0344/moe-chinese-grade-4-vol-2-2019">课本 App：部编版四年级下册语文<span>核对教材页面和课文范围。</span></a>
+            <a class="source-link" href="https://www.51jiaoxi.com/books/160568/">51 教习网：四年级语文下册资料<span>参考 2026 春目录和资料分类。</span></a>
+            <a class="source-link" href="https://www.diyifanwen.com/fanwen/xuexijihua/1412004124357296.htm">第一范文网：四年级语文下册复习资料<span>参考复习资料汇总方向。</span></a>
+          </div>
+        </section>
+
+        <div class="empty-state" id="emptyState">没有找到匹配内容。可以换一个关键词，比如“动物”“说明方法”“我的乐园”。</div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const units = [
+      {
+        id: 1,
+        title: "乡村生活与自然景物",
+        lessons: "《古诗词三首》《乡下人家》《天窗》《三月桃花水》",
+        tags: ["写景", "古诗词", "我的乐园"],
+        points: [
+          "古诗词要能背诵、默写，能抓住景物、季节、儿童生活和乡村情趣理解诗意。",
+          "写景顺序可以按时间、空间或景物类别展开。",
+          "阅读常考：作者通过哪些景物表现乡村生活的美，句子用了什么修辞，表达了怎样的情感。"
+        ],
+        words: "篱、蜻、蜓、蝶、宿、疏、徐、茅、檐、锄、赖"
+      },
+      {
+        id: 2,
+        title: "自然奥秘与科学技术",
+        lessons: "《琥珀》《飞向蓝天的恐龙》《纳米技术就在我们身边》《千年梦圆在今朝》",
+        tags: ["科普", "说明方法", "奇思妙想"],
+        points: [
+          "科普文先找说明对象，再看特点、用途、形成过程或发展过程。",
+          "分清真实依据和合理推测，掌握举例子、列数字、作比较、打比方等说明方法。",
+          "说新闻要讲清来源、时间、地点、人物、事件和自己的看法。"
+        ],
+        words: "琥珀、松脂、拂拭、隧道、膨大、纳米、细胞、病灶、遨游、苍穹"
+      },
+      {
+        id: 3,
+        title: "现代诗",
+        lessons: "《短诗三首》《绿》《白桦》《在天晴了的时候》",
+        tags: ["朗读", "意象", "诗歌"],
+        points: [
+          "朗读时注意节奏、停顿和语气。",
+          "诗中反复出现的颜色、景物、声音常常承载情感。",
+          "仿写短诗可以围绕颜色、季节、校园、童年等主题。"
+        ],
+        words: "繁星、藤萝、波涛、潇洒、朦胧、寂静、徜徉"
+      },
+      {
+        id: 4,
+        title: "作家笔下的动物",
+        lessons: "《猫》《母鸡》《白鹅》",
+        tags: ["动物", "细节描写", "明贬实褒"],
+        points: [
+          "抓住外形、动作、叫声、生活习性和性格来写动物。",
+          "理解明贬实褒、对比、拟人、细节描写等表达方法。",
+          "写动物朋友时要用具体事例表现特点，不能只列外形。"
+        ],
+        words: "贪玩、尽职、屏息、稿纸、解闷、遭殃、警戒、侍候、脾气、譬如"
+      },
+      {
+        id: 5,
+        title: "游览顺序与景物描写",
+        lessons: "《海上日出》《记金华的双龙洞》",
+        tags: ["游记", "移步换景", "游______"],
+        points: [
+          "游览顺序要清楚，地点变化要交代自然。",
+          "写景可抓颜色、形状、声音、光线和动态变化。",
+          "写游记时每到一处都要写看到什么、听到什么、想到什么。"
+        ],
+        words: "扩大、范围、刹那、镶边、浙江、杜鹃、臀部、额角、蜿蜒"
+      },
+      {
+        id: 6,
+        title: "儿童成长与品质",
+        lessons: "《小英雄雨来（节选）》《我们家的男子汉》《芦花鞋》",
+        tags: ["成长", "人物描写", "我学会了"],
+        points: [
+          "概括故事可用：谁在什么情况下做了什么，结果怎样。",
+          "人物的语言、动作、神态、心理描写能体现性格。",
+          "关注勇敢、机智、坚强、独立、善良、担当等品质。"
+        ],
+        words: "晋察冀、炕沿、劫难、慌忙、胳膊、枪栓、戒指、嘱咐"
+      },
+      {
+        id: 7,
+        title: "人物精神与品格",
+        lessons: "《古诗三首》《文言文二则》《“诺曼底号”遇难记》《黄继光》",
+        tags: ["古诗文", "人物精神", "自画像"],
+        points: [
+          "古诗文要能解释关键词，能说出诗中人物或故事给人的启示。",
+          "人物精神常见表达：忠于职守、舍己为人、坚持不懈、英勇无畏。",
+          "阅读题常考：某句话表现了人物什么品质，环境描写有什么作用。"
+        ],
+        words: "囊萤夜读、铁杵成针、岗位、秩序、主宰、调遣、实践、牺牲"
+      },
+      {
+        id: 8,
+        title: "童话与想象",
+        lessons: "《宝葫芦的秘密（节选）》《巨人的花园》《海的女儿》",
+        tags: ["童话", "想象", "故事新编"],
+        points: [
+          "童话想象丰富，情节奇妙，常有道理或启示。",
+          "关注人物前后态度、行为和结果的变化。",
+          "故事新编可以改时间、地点、人物遭遇或结局，但要合情合理。"
+        ],
+        words: "介绍、妖怪、规矩、乖巧、撵走、踪迹、呼啸、脸颊、拆除"
+      }
+    ];
+
+    const writings = [
+      ["我的乐园", "写清乐园在哪里、样子怎样、自己常做什么、为什么快乐。"],
+      ["我的奇思妙想", "写清发明名称、外形特点、特殊功能、使用场景和愿望。"],
+      ["我的动物朋友", "写外形、习性和具体事例，重点表现动物的特点与自己的感情。"],
+      ["游______", "按游览顺序写，抓一两个重点景物详细描写。"],
+      ["我学会了______", "重点写学习过程中的困难、方法、变化和收获。"],
+      ["我的自画像", "写外貌、性格、爱好、优缺点，并用具体事例证明。"],
+      ["故事新编", "选择熟悉故事，设计新情节、新问题和合理结局。"]
+    ];
+
+    const checks = [
+      "生字词能听写过关，错字已经订正并组词。",
+      "古诗文和日积月累能背、能写、能解释关键词句。",
+      "每篇精读课文的主要内容和中心能说出来。",
+      "常见修辞、说明方法、人物描写方法能判断。",
+      "阅读题能用完整句作答，并能回到原文找依据。",
+      "作文有素材、有顺序、有具体事例，不跑题。"
+    ];
+
+    const unitGrid = document.getElementById("unitGrid");
+    const writingGrid = document.getElementById("writingGrid");
+    const checklist = document.getElementById("checklist");
+    const progressFill = document.getElementById("progressFill");
+    const progressText = document.getElementById("progressText");
+    const searchInput = document.getElementById("searchInput");
+    const tabs = Array.from(document.querySelectorAll(".tab"));
+    const emptyState = document.getElementById("emptyState");
+    let activeFilter = "all";
+
+    function escapeText(value) {
+      return String(value).replace(/[&<>"']/g, function (char) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[char];
+      });
+    }
+
+    function list(items) {
+      return "<ul class=\"bullets\">" + items.map(function (item) {
+        return "<li>" + escapeText(item) + "</li>";
+      }).join("") + "</ul>";
+    }
+
+    function renderUnits() {
+      unitGrid.innerHTML = units.map(function (unit) {
+        const search = [unit.title, unit.lessons, unit.tags.join(" "), unit.points.join(" "), unit.words].join(" ");
+        return [
+          "<article class=\"unit-card\" data-kind=\"unit\" data-search=\"" + escapeText(search) + "\">",
+          "  <div class=\"unit-head\">",
+          "    <span class=\"unit-number\">" + unit.id + "</span>",
+          "    <div><h3>第 " + unit.id + " 单元：" + escapeText(unit.title) + "</h3><p class=\"subtitle\">" + escapeText(unit.lessons) + "</p></div>",
+          "  </div>",
+          "  <div class=\"tag-row\">" + unit.tags.map(function (tag) { return "<span class=\"tag\">" + escapeText(tag) + "</span>"; }).join("") + "</div>",
+          "  <section class=\"section-block\"><h4>复习重点</h4>" + list(unit.points) + "</section>",
+          "  <section class=\"section-block\"><h4>重点词语</h4><div class=\"chips\">" + unit.words.split("、").map(function (word) { return "<span class=\"chip\">" + escapeText(word) + "</span>"; }).join("") + "</div></section>",
+          "</article>"
+        ].join("");
+      }).join("");
+    }
+
+    function renderWriting() {
+      writingGrid.innerHTML = writings.map(function (item) {
+        return "<div class=\"task\" data-kind=\"writing\" data-search=\"" + escapeText(item.join(" ")) + "\"><strong>" + escapeText(item[0]) + "</strong>" + escapeText(item[1]) + "</div>";
+      }).join("");
+    }
+
+    function renderChecks() {
+      const saved = JSON.parse(localStorage.getItem("yuwen4xChecklist") || "{}");
+      checklist.innerHTML = checks.map(function (item, index) {
+        const checked = saved[index] ? " checked" : "";
+        return "<label class=\"check-item\"><input type=\"checkbox\" data-check=\"" + index + "\"" + checked + "><span>" + escapeText(item) + "</span></label>";
+      }).join("");
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const boxes = Array.from(document.querySelectorAll("[data-check]"));
+      const done = boxes.filter(function (box) { return box.checked; }).length;
+      const percent = boxes.length ? Math.round(done / boxes.length * 100) : 0;
+      progressFill.style.width = percent + "%";
+      progressText.textContent = done ? "已完成 " + done + " / " + boxes.length + " 项，继续盯错题和作文素材。" : "还没有勾选检查项。";
+    }
+
+    function applyFilter() {
+      const keyword = searchInput.value.trim().toLowerCase();
+      const cards = Array.from(document.querySelectorAll("[data-kind]"));
+      let visibleCount = 0;
+      cards.forEach(function (card) {
+        const kindAllowed = activeFilter === "all" || card.dataset.kind === activeFilter;
+        const searchText = (card.dataset.search || card.textContent || "").toLowerCase();
+        const keywordAllowed = !keyword || searchText.includes(keyword);
+        const visible = kindAllowed && keywordAllowed;
+        card.style.display = visible ? "" : "none";
+        if (visible) visibleCount += 1;
+      });
+      emptyState.style.display = visibleCount ? "none" : "block";
+    }
+
+    renderUnits();
+    renderWriting();
+    renderChecks();
+
+    document.getElementById("printPage").addEventListener("click", function () {
+      window.print();
+    });
+
+    checklist.addEventListener("change", function (event) {
+      if (!event.target.matches("[data-check]")) return;
+      const saved = JSON.parse(localStorage.getItem("yuwen4xChecklist") || "{}");
+      saved[event.target.dataset.check] = event.target.checked;
+      localStorage.setItem("yuwen4xChecklist", JSON.stringify(saved));
+      updateProgress();
+    });
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        tabs.forEach(function (item) { item.classList.remove("is-active"); });
+        tab.classList.add("is-active");
+        activeFilter = tab.dataset.filter;
+        applyFilter();
+      });
+    });
+
+    searchInput.addEventListener("input", applyFilter);
+  </script>
+</body>
+</html>
